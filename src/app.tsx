@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Layout from "./components/layout"
-import Dashboard from "./pages/dashboard/dashboard"
+import Dashboard from "./pages/dashboard/dashboardManager"
 import { Toaster } from "react-hot-toast"
 
 function App() {
-
   return (
     <>
       <Toaster
