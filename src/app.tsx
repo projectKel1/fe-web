@@ -10,6 +10,7 @@ import ReimbursementManager from './pages/reimbursement/reimbursementManager';
 import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
 import TargetManager from './pages/target/targetManager';
 import LeaveManager from './pages/leave/leaveManager';
+import DashboardHr from './pages/dashboard/dashboardHr';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard-manager" element={<DashboardManager />} />
             <Route path="/dashboard-employee" element={<DashboardEmployee />} />
+            <Route path="/dashboard-hr" element={<DashboardHr />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
             <Route path="/reimbursement-manager" element={<ReimbursementManager />} />
             <Route path="/reimbursement-karyawan-manager" element={<ReimbursementKaryawanManager />} />
