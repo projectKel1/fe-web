@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import DashboardManager from './pages/dashboard/dashboardManager';
 import DashboardEmployee from './pages/dashboard/dashboardEmployee';
 import AttandanceManager from './pages/attendance/attandanceManager';
+import AttendanceEmployee from './pages/attendance/attendanceEmployee';
 import ReimbursementManager from './pages/reimbursement/reimbursementManager';
 import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
 import TargetManager from './pages/target/targetManager';
@@ -23,8 +24,18 @@ function App() {
             <Route path="/dashboard-manager" element={<DashboardManager />} />
             <Route path="/dashboard-employee" element={<DashboardEmployee />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
-            <Route path="/reimbursement-manager" element={<ReimbursementManager />} />
-            <Route path="/reimbursement-karyawan-manager" element={<ReimbursementKaryawanManager />} />
+            <Route
+              path="/attendance-employee"
+              element={<AttendanceEmployee />}
+            />
+            <Route
+              path="/reimbursement-manager"
+              element={<ReimbursementManager />}
+            />
+            <Route
+              path="/reimbursement-karyawan-manager"
+              element={<ReimbursementKaryawanManager />}
+            />
             <Route path="/target-manager" element={<TargetManager />} />
             <Route path="/leave-manager" element={<LeaveManager />} />
           </Route>
