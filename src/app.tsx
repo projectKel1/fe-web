@@ -6,11 +6,13 @@ import { Toaster } from 'react-hot-toast';
 import DashboardManager from './pages/dashboard/dashboardManager';
 import DashboardEmployee from './pages/dashboard/dashboardEmployee';
 import AttandanceManager from './pages/attendance/attandanceManager';
+import AttendanceEmployee from './pages/attendance/attendanceEmployee';
 import ReimbursementManager from './pages/reimbursement/reimbursementManager';
 import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
 import TargetManager from './pages/target/targetManager';
 import LeaveManager from './pages/leave/leaveManager';
 import AttendanceHr from './pages/attendance/attendanceHr';
+import DashboardHr from './pages/dashboard/dashboardHr';
 
 function App() {
   return (
@@ -23,10 +25,21 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard-manager" element={<DashboardManager />} />
             <Route path="/dashboard-employee" element={<DashboardEmployee />} />
+            <Route path="/dashboard-hr" element={<DashboardHr />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
             <Route path="/attendance-hr" element={<AttendanceHr />} />
-            <Route path="/reimbursement-manager" element={<ReimbursementManager />} />
-            <Route path="/reimbursement-karyawan-manager" element={<ReimbursementKaryawanManager />} />
+            <Route
+              path="/attendance-employee"
+              element={<AttendanceEmployee />}
+            />
+            <Route
+              path="/reimbursement-manager"
+              element={<ReimbursementManager />}
+            />
+            <Route
+              path="/reimbursement-karyawan-manager"
+              element={<ReimbursementKaryawanManager />}
+            />
             <Route path="/target-manager" element={<TargetManager />} />
             <Route path="/leave-manager" element={<LeaveManager />} />
           </Route>
