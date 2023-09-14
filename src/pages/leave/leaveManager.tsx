@@ -1,5 +1,4 @@
 import CardLeave from "../../components/cardLeave"
-import Table from "../../components/table"
 
 const LeaveManager = () => {
     return (

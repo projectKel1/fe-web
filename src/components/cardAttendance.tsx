@@ -22,7 +22,7 @@ const CardAttendance = () => {
                         </span>
                     </div>
                     <div>
-                        <Button textBtn="Check In" color="bg-bgBtn" />
+                        <Button onClick={``} textBtn="Check In" color="bg-bgBtn" />
                     </div>
                 </div>
                 <div>
@@ -35,7 +35,7 @@ const CardAttendance = () => {
                         </span>
                     </div>
                     <div>
-                        <Button textBtn="Check Out" color="bg-bgBtnRed" />
+                        <Button onClick={``} textBtn="Check Out" color="bg-bgBtnRed" />
                     </div>
                 </div>
 
