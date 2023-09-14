@@ -1,4 +1,25 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+interface Data {
+    nama: string,
+    keterangan: string,
+    jenis: string,
+    status: string
+}
 const ReimbursementKaryawanManager = () => {
+    const [data, setData] = useState<Data[]>([])
+    const getData = async () => {
+        try {
+            const response = await axios.get(`https://62c3aad4876c4700f540123e.mockapi.io/hrReimburstmen`)
+            console.log(response.data)
+            setData(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getData()
+    })
     return (
         <div className="p-10 h-full bg-bgMain">
             <div className="py-2 w-full bg-white rounded-cardBase">
@@ -33,48 +54,31 @@ const ReimbursementKaryawanManager = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="bg-white border-b ">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        Abdul
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        Pasang Gigi Baru
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Sakit
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        21/01/2023
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Pending
-                                    </td>
-                                    <td className="px-6 py-4 flex gap-2">
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Reject</a>
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Approve</a>
-                                    </td>
-                                </tr>
-                                <tr className="border-b bg-bgCard">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        Abdul
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        Pasang Gigi Baru
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Sakit
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        21/01/2023
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Pending
-                                    </td>
-                                    <td className="px-6 py-4 flex gap-2">
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Reject</a>
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Approve</a>
-                                    </td>
-                                </tr>
+                                {
+                                    data ? data.map((element, index) => (
+                                        <tr key={index} className={`${index % 2 == 0 ? 'bg-white' : 'bg-bgCard '} border-b`}>
+                                            <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                                {element.nama}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {element.keterangan}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {element.jenis}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                12/01/2023
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {element.status}
+                                            </td>
+                                            <td className="px-6 py-4 flex gap-2">
+                                                <a href="#" className="font-medium text-blue-600  hover:underline">Reject</a>
+                                                <a href="#" className="font-medium text-blue-600  hover:underline">Approve</a>
+                                            </td>
+                                        </tr>
+                                    )) : null
+                                }
                             </tbody>
                         </table>
                     </div>
