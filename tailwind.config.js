@@ -13,7 +13,7 @@ export default {
         bgBtn: '#4DAC98',
         bgBtnRed: '#A30D11',
         bgCard: '#DCFCE7',
-        bgMain: '#FAFBFC',
+        bgMain: '#F9F9F9',
         hoverBtn: '#3C8273',
         subTitle: '#737791'
       },

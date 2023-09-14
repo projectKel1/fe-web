@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { LuChevronDown } from 'react-icons/lu'
+import {motion} from 'framer-motion'
 const Navbar = () => {
     const [open, setOpen] = useState(false)
 
@@ -19,7 +20,9 @@ const Navbar = () => {
                 </div>
                 {
                     open ? (
-                        <div className="z-10 absolute top-14 divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <motion.div 
+                        animate={{y:5}}
+                        className="z-10 absolute top-14 divide-y divide-gray-100 rounded-lg shadow w-44">
                             <div className="px-4 py-3 text-sm">
                                 <div className="font-medium">name@email.com</div>
                             </div>
@@ -31,7 +34,7 @@ const Navbar = () => {
                             <div className="py-1">
                                 <div className="block cursor-pointer px-4 py-2 text-sm hover:bg-gray-100">Sign out</div>
                             </div>
-                        </div>
+                        </motion.div>
                     ) : null
                 }
 
