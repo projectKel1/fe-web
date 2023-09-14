@@ -6,7 +6,6 @@ import { Toaster } from 'react-hot-toast';
 import DashboardManager from './pages/dashboard/dashboardManager';
 import DashboardEmployee from './pages/dashboard/dashboardEmployee';
 import AttandanceManager from './pages/attendance/attandanceManager';
-import AttendanceEmployee from './pages/attendance/attendanceEmployee';
 
 function App() {
   return (
@@ -20,10 +19,6 @@ function App() {
             <Route path="/dashboard-manager" element={<DashboardManager />} />
             <Route path="/dashboard-employee" element={<DashboardEmployee />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
-            <Route
-              path="/attendance-employee"
-              element={<AttendanceEmployee />}
-            />
           </Route>
         </Routes>
       </BrowserRouter>
