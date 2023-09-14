@@ -5,6 +5,10 @@ import Login from './pages/login/login';
 import { Toaster } from 'react-hot-toast';
 import DashboardManager from './pages/dashboard/dashboardManager';
 import AttandanceManager from './pages/attendance/attandanceManager';
+import ReimbursementManager from './pages/reimbursement/reimbursementManager';
+import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
+import TargetManager from './pages/target/targetManager';
+import LeaveManager from './pages/leave/leaveManager';
 
 function App() {
   return (
@@ -17,6 +21,10 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard-manager" element={<DashboardManager />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
+            <Route path="/reimbursement-manager" element={<ReimbursementManager />} />
+            <Route path="/reimbursement-karyawan-manager" element={<ReimbursementKaryawanManager />} />
+            <Route path="/target-manager" element={<TargetManager />} />
+            <Route path="/leave-manager" element={<LeaveManager />} />
           </Route>
         </Routes>
       </BrowserRouter>
