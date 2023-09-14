@@ -17,7 +17,7 @@ const CardTarget: React.FC<Target> = ({tittle,subTittle}) => {
             </div>
             <div className="py-10 flex flex-wrap justify-end">
                 <div>
-                    <Button textBtn="Add Target" color="bg-bgBtn" />
+                    <Button onClick={``} textBtn="Add Target" color="bg-bgBtn" />
                 </div>
             </div>
         </div>
