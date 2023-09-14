@@ -13,7 +13,7 @@ import TargetManager from './pages/target/targetManager';
 import LeaveManager from './pages/leave/leaveManager';
 import DashboardHr from './pages/dashboard/dashboardHr';
 import ReimbursementHr from './pages/reimbursement/reimbursementHr';
-import AttandanceHr from './pages/attendance/attandanceHr';
+import AttandanceHr from './pages/attendance/attendanceHr';
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
             <Route path="/target-manager" element={<TargetManager />} />
             <Route path="/leave-manager" element={<LeaveManager />} />
             <Route
-              path="/attandance-hr"
+              path="/attendance-hr"
               element={<AttandanceHr />}
             />
           </Route>
