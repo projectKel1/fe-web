@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout';
-import Dashboard from './pages/dashboard/dashboardManager';
 import Landing from './pages/landing/landing';
 import Login from './pages/login/login';
 import { Toaster } from 'react-hot-toast';
+import DashboardManager from './pages/dashboard/dashboardManager';
+import AttandanceManager from './pages/attendance/attandanceManager';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Layout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard-manager" element={<DashboardManager />} />
+            <Route path="/attendance-manager" element={<AttandanceManager />} />
           </Route>
         </Routes>
       </BrowserRouter>
