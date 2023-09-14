@@ -9,6 +9,7 @@ import AttandanceManager from './pages/attendance/attandanceManager';
 import AttendanceEmployee from './pages/attendance/attendanceEmployee';
 import ReimbursementManager from './pages/reimbursement/reimbursementManager';
 import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
+import ReimbursmentEmployee from './pages/reimbursement/reimbursmentEmployee';
 import TargetManager from './pages/target/targetManager';
 import LeaveManager from './pages/leave/leaveManager';
 import DashboardHr from './pages/dashboard/dashboardHr';
@@ -41,15 +42,13 @@ function App() {
               element={<ReimbursementKaryawanManager />}
             />
             <Route
-              path="/reimbursement-hr"
-              element={<ReimbursementHr />}
+              path="/reimbursement-employee"
+              element={<ReimbursmentEmployee />}
             />
+            <Route path="/reimbursement-hr" element={<ReimbursementHr />} />
             <Route path="/target-manager" element={<TargetManager />} />
             <Route path="/leave-manager" element={<LeaveManager />} />
-            <Route
-              path="/attendance-hr"
-              element={<AttandanceHr />}
-            />
+            <Route path="/attendance-hr" element={<AttandanceHr />} />
           </Route>
         </Routes>
       </BrowserRouter>
