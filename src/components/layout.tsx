@@ -20,7 +20,7 @@ const Layout = () => {
                 className={`flex shadow-lg flex-col`}>
                 <Sidebar slide={open} />
             </motion.div>
-            <div onClick={() => setOpen(!open)} className={`w-10 h-10 rounded-lg  ${open ? `left-[75px]` : `left-56`} cursor-pointer shadow-lg bg-gray-100 flex justify-center items-center`}>
+            <div onClick={() => setOpen(!open)} className={`w-10 h-10 top-4 absolute rounded-lg  ${open ? `left-[75px]` : `left-56`} cursor-pointer shadow-lg bg-gray-100 flex justify-center items-center`}>
                 {
                     open ? (
                         <LuChevronRight />
