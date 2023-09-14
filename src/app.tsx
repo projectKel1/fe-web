@@ -11,6 +11,7 @@ import ReimbursementManager from './pages/reimbursement/reimbursementManager';
 import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
 import TargetManager from './pages/target/targetManager';
 import LeaveManager from './pages/leave/leaveManager';
+import DashboardHr from './pages/dashboard/dashboardHr';
 import ReimbursementHr from './pages/reimbursement/reimbursementHr';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard-manager" element={<DashboardManager />} />
             <Route path="/dashboard-employee" element={<DashboardEmployee />} />
+            <Route path="/dashboard-hr" element={<DashboardHr />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
             <Route
               path="/attendance-employee"
