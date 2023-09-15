@@ -17,6 +17,7 @@ const DashboardManager = () => {
   useEffect(() => {
     getData()
   }, [])
+  console.log(reimbursement)
 
   return (
     <section className="p-10">

@@ -17,6 +17,7 @@ const ReimbursementManager = () => {
   useEffect(() => {
     getData()
   }, [])
+  console.log(data)
   return (
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2">
