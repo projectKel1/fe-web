@@ -1,11 +1,16 @@
-import CardReimbursement from "../../components/cardReimbursement"
+
+import CardHr from "../../components/cardHr"
 import Table from "../../components/table"
 
 const ReimbursementHr = () => {
   return (
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2">
-        <CardReimbursement tittle="Reimbursement HR" subTittle="Check Reimbursement here" />
+      <CardHr
+          tittle="Reimbursement HR"
+          subTittle="Check Reimbursement Here"
+          textBtn="Add Request"
+        />
       </div>
       <div className="py-2 w-full bg-white rounded-cardBase">
         <div className="p-5">
