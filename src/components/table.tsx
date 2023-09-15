@@ -1,6 +1,7 @@
 import { LuFileEdit, LuTrash2 } from "react-icons/lu"
 
 const Table = () => {
+
     return (
         <div>
             <div className="relative overflow-x-auto">
@@ -28,7 +29,7 @@ const Table = () => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-800">
-                        <tr className="bg-white border-b">
+                        <tr className="bg-white border-b hover:bg-gray-300">
                             <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                 Abdul
                             </td>
@@ -56,7 +57,7 @@ const Table = () => {
                                 </div>
                             </td>
                         </tr>
-                        <tr className="border-b bg-bgCard">
+                        <tr className="border-b hover:bg-green-200 bg-bgCard">
                             <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                 Abdul
                             </td>

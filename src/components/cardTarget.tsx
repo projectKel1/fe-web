@@ -8,10 +8,10 @@ const CardTarget: React.FC<Target> = ({tittle,subTittle}) => {
     return (
         <div className="rounded-cardBase bg-white w-full p-10">
             <div>
-                <h1 className="font-semibold text-2xl">
+                <h1 className="font-bold text-2xl">
                     {tittle}
                 </h1>
-                <p className="text-subTitle font-medium text-lg">
+                <p className="text-subTitle font-semibold text-lg">
                     {subTittle}
                 </p>
             </div>

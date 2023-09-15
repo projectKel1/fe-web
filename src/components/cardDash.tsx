@@ -5,9 +5,9 @@ interface CardDash {
 }
 const CardDash: React.FC<CardDash> = ({ tittle, count, icons }) => {
     return (
-        <div className="w-72 h-52 shadow-lg rounded-xl">
+        <div className="w-80 h-52 shadow-lg rounded-xl">
             <div className="px-8 py-4 bg-bgCard rounded-t-xl flex justify-between items-center">
-                <div>{tittle}</div>
+                <h1 className="font-semibold text-lg">{tittle}</h1>
                 <div>
                     {icons}
                 </div>

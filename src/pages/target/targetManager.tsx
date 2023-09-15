@@ -46,7 +46,7 @@ const TargetManager = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="text-gray-800">
-                                        <tr className="bg-white border-b ">
+                                        <tr className="bg-white border-b hover:bg-gray-300">
                                             <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                                 Abdul
                                             </td>
@@ -66,13 +66,17 @@ const TargetManager = () => {
                                                 Belum Approve
                                             </td>
                                             <td className="px-6 py-4">
-                                                file.jpg
+                                                <img src="https://placekitten.com/200/300" className="w-20" alt="" />
                                             </td>
                                             <td className="px-6 py-4">
-                                                Detail
+                                                <div className="border-2 w-1/2 border-gray-700 rounded-cardBase hover:bg-gray-800 hover:text-white cursor-pointer">
+                                                    <div className='px-4 py-2'>
+                                                        Detail
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
-                                        <tr className="border-b bg-bgCard">
+                                        <tr className="border-b hover:bg-green-200 bg-bgCard">
                                             <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                                 Abdul
                                             </td>
@@ -92,10 +96,14 @@ const TargetManager = () => {
                                                 Pending
                                             </td>
                                             <td className="px-6 py-4">
-                                                file.jpg
+                                                <img src="https://placekitten.com/200/300" className="w-20" alt="" />
                                             </td>
                                             <td className="px-6 py-4">
-                                                Detail
+                                                <div className="border-2 w-1/2 border-gray-700 rounded-cardBase hover:bg-gray-800 hover:text-white cursor-pointer">
+                                                    <div className='px-4 py-2'>
+                                                        Detail
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
