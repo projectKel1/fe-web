@@ -15,6 +15,9 @@ const AttandanceManager = () => {
                 </div>
                 <div className="p-2">
                     <Table />
+                    <div className="flex justify-end p-4">
+                        
+                    </div>
                 </div>
             </div>
         </div>

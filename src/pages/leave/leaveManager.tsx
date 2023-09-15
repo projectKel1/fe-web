@@ -14,8 +14,8 @@ const LeaveManager = () => {
                 </div>
                 <div className="p-2">
                     <div className="relative overflow-x-auto">
-                        <table className="w-full text-sm text-left text-gray-500">
-                            <thead className="text-xs text-gray-700 uppercase border-b-2">
+                        <table className="w-full text-sm text-left font-semibold">
+                            <thead className="text-md uppercase border-b-2">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
                                         Name
@@ -35,16 +35,16 @@ const LeaveManager = () => {
                                     <th scope="col" className="px-6 py-3">
                                         File
                                     </th>
-                                    <th scope="col" className="px-6 py-3">
+                                    <th scope="col" className="px-6 text-center py-3">
                                         Action
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr className="bg-white border-b ">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <tbody className="text-gray-800">
+                                <tr className="bg-white border-b hover:bg-gray-300">
+                                    <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                         Abdul
-                                    </th>
+                                    </td>
                                     <td className="px-6 py-4">
                                         3 Hari
                                     </td>
@@ -58,17 +58,25 @@ const LeaveManager = () => {
                                         Belum Approve
                                     </td>
                                     <td className="px-6 py-4">
-                                        file.jpg
+                                        <img src="https://placekitten.com/200/300" className="w-20" alt="" />
                                     </td>
-                                    <td className="px-6 py-4 flex gap-2">
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Reject</a>
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Approve</a>
+                                    <td className="px-6 py-4 flex justify-center gap-5">
+                                        <div className="text-red-800 border-2 border-red-800 rounded-cardBase hover:bg-red-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Reject
+                                            </div>
+                                        </div>
+                                        <div className="text-green-800 border-2 border-bgBtn rounded-cardBase hover:bg-green-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Approve
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
-                                <tr className="border-b bg-bgCard">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <tr className="border-b hover:bg-green-200 bg-bgCard">
+                                    <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                         Abdul
-                                    </th>
+                                    </td>
                                     <td className="px-6 py-4">
                                         3 Hari
                                     </td>
@@ -82,11 +90,19 @@ const LeaveManager = () => {
                                         Belum Approve
                                     </td>
                                     <td className="px-6 py-4">
-                                        file.jpg
+                                        <img src="https://placekitten.com/200/300" className="w-20" alt="" />
                                     </td>
-                                    <td className="px-6 py-4 flex gap-2">
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Reject</a>
-                                        <a href="#" className="font-medium text-blue-600  hover:underline">Approve</a>
+                                    <td className="px-6 py-4 flex justify-center gap-5">
+                                        <div className="text-red-800 border-2 border-red-800 rounded-cardBase hover:bg-red-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Reject
+                                            </div>
+                                        </div>
+                                        <div className="text-green-800 border-2 border-bgBtn rounded-cardBase hover:bg-green-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Approve
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
