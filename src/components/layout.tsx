@@ -11,7 +11,6 @@ const Layout = () => {
         expand: { width: "5%" },
         nonExpand: { width: "15%" }
     }
-    console.log(open)
     return (
         <div className="flex">
             <motion.div

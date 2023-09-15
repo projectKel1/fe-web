@@ -4,8 +4,8 @@ const Table = () => {
     return (
         <div>
             <div className="relative overflow-x-auto">
-                <table className="w-full text-sm text-left text-gray-500">
-                    <thead className="text-xs text-gray-700 uppercase border-b-2">
+                <table className="w-full text-sm text-left  font-semibold">
+                    <thead className="text-md uppercase border-b-2">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Name
@@ -27,9 +27,9 @@ const Table = () => {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr className="bg-white border-b ">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <tbody className="text-gray-800">
+                        <tr className="bg-white border-b">
+                            <th scope="row" className="px-6 py-4 whitespace-nowrap">
                                 Abdul
                             </th>
                             <td className="px-6 py-4">
@@ -42,7 +42,7 @@ const Table = () => {
                                 21/01/2023
                             </td>
                             <td className="px-6 py-4">
-                                <span className="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">
+                                <span className="inline-flex font-semibold items-center bg-red-100 text-red-800 text-sm mr-2 px-2.5 py-0.5 rounded-full">
                                     <span className="w-2 h-2 mr-1 bg-red-500 rounded-full"></span>
                                     Pending
                                 </span>
@@ -57,7 +57,7 @@ const Table = () => {
                             </td>
                         </tr>
                         <tr className="border-b bg-bgCard">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <th scope="row" className="px-6 py-4 whitespace-nowrap">
                                 Abdul
                             </th>
                             <td className="px-6 py-4">
@@ -70,7 +70,7 @@ const Table = () => {
                                 21/01/2023
                             </td>
                             <td className="px-6 py-4">
-                                <span className="inline-flex items-center bg-green-200 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">
+                                <span className="inline-flex items-center bg-green-200 text-green-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full">
                                     <span className="w-2 h-2 mr-1 bg-green-500 rounded-full"></span>
                                     Approved
                                 </span>
