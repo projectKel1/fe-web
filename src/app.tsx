@@ -11,6 +11,7 @@ import ReimbursementManager from './pages/reimbursement/reimbursementManager';
 import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
 import ReimbursmentEmployee from './pages/reimbursement/reimbursmentEmployee';
 import TargetManager from './pages/target/targetManager';
+import TargetEmployee from './pages/target/targetEmployee';
 import LeaveManager from './pages/leave/leaveManager';
 import LeaveEmployee from './pages/leave/leaveEmployee';
 import DashboardHr from './pages/dashboard/dashboardHr';
@@ -19,7 +20,7 @@ import AttandanceHr from './pages/attendance/attendanceHr';
 import axios from 'axios';
 
 function App() {
-  axios.defaults.baseURL = 'https://hris-kelompok-1-32uzyeupwa-as.a.run.app'
+  axios.defaults.baseURL = 'https://hris-kelompok-1-32uzyeupwa-as.a.run.app';
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
@@ -50,6 +51,7 @@ function App() {
             />
             <Route path="/reimbursement-hr" element={<ReimbursementHr />} />
             <Route path="/target-manager" element={<TargetManager />} />
+            <Route path="/target-employee" element={<TargetEmployee />} />
             <Route path="/leave-manager" element={<LeaveManager />} />
             <Route path="/leave-employee" element={<LeaveEmployee />} />
             <Route path="/attendance-hr" element={<AttandanceHr />} />
