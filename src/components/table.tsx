@@ -29,9 +29,9 @@ const Table = () => {
                     </thead>
                     <tbody className="text-gray-800">
                         <tr className="bg-white border-b">
-                            <th scope="row" className="px-6 py-4 whitespace-nowrap">
+                            <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                 Abdul
-                            </th>
+                            </td>
                             <td className="px-6 py-4">
                                 Pasang Gigi Baru
                             </td>
@@ -57,9 +57,9 @@ const Table = () => {
                             </td>
                         </tr>
                         <tr className="border-b bg-bgCard">
-                            <th scope="row" className="px-6 py-4 whitespace-nowrap">
+                            <td scope="row" className="px-6 py-4 whitespace-nowrap">
                                 Abdul
-                            </th>
+                            </td>
                             <td className="px-6 py-4">
                                 Pasang Gigi Baru
                             </td>
