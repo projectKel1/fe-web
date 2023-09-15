@@ -5,7 +5,7 @@ const DashboardEmployee = () => {
   return (
     <section className="p-10">
       <div>
-        <h1 className="font-semibold text-lg">
+        <h1 className="font-semibold text-2xl">
           Selamat Datang, Anda Login Sebagai Employee
         </h1>
       </div>
