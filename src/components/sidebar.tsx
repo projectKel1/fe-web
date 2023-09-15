@@ -1,25 +1,31 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { LuPieChart, LuCalendarRange, LuShield, LuBuilding, LuUser2, LuCircleDollarSign, LuBriefcase } from 'react-icons/lu'
 import Logo from '../assets/logo.png'
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Cookies from "js-cookie"
 interface Slide {
     slide: boolean
 }
 const Sidebar: React.FC<Slide> = ({ slide }) => {
     const location = useLocation();
+    const [data, setData] = useState()
+
     const sideLink = [{
-        to: "/dashboard",
+        to: "/dashboard-manager",
+        url: <LuPieChart size={25} />,
+        name: "Dashboard"
+    }, {
+        to: "/dashboard-hr",
         url: <LuPieChart size={25} />,
         name: "Dashboard"
     }, {
         to: "/attendance-manager",
         url: <LuCalendarRange size={25} />,
-        name: "Attendance Manager"
+        name: "Attendance"
     }, {
         to: "/reimbursement-manager",
         url: <LuCircleDollarSign size={25} />,
-        name: "Reimbursement Manager"
+        name: "Reimbursement"
     }, {
         to: "/list-employee",
         url: <LuUser2 size={25} />,
@@ -33,7 +39,11 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
         url: <LuShield size={25} />,
         name: "Reimburstmen Employee"
     }, {
-        to: "/class",
+        to: "/target-manager",
+        url: <LuShield size={25} />,
+        name: "List Target Employee"
+    }, {
+        to: "/leave-manager",
         url: <LuBriefcase size={25} />,
         name: "Leave"
     }]
@@ -41,6 +51,10 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
     useEffect(() => {
         if (!Cookies.get('data')) {
             navigate('/login')
+        } else {
+            const tempData: any = Cookies.get('data')
+            const data = JSON.parse(tempData)
+            setData(data.data.role_id)
         }
     }, [])
     return (
@@ -62,6 +76,9 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
                 </div>
                 {
                     sideLink.map((element, index) => {
+                        if ((element.to === "/Company" || element.to === "/dashboard-hr" || element.to === "/list-employee") && data === 1) {
+                            return null
+                        }
                         return (
                             <div key={index}>
                                 <div className="space-y-2 font-medium flex px-4">
