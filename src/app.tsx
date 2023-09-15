@@ -19,6 +19,7 @@ import ReimbursementHr from './pages/reimbursement/reimbursementHr';
 import AttandanceHr from './pages/attendance/attendanceHr';
 import axios from 'axios';
 import EmployeeHr from './pages/employee/employeeHr';
+import LeaveHr from './pages/leave/leaveHr';
 
 function App() {
   axios.defaults.baseURL = 'https://hris-kelompok-1-32uzyeupwa-as.a.run.app';
@@ -57,6 +58,7 @@ function App() {
             <Route path="/leave-employee" element={<LeaveEmployee />} />
             <Route path="/attendance-hr" element={<AttandanceHr />} />
             <Route path="/employee-hr" element={<EmployeeHr />} />
+            <Route path="/leave-hr" element={<LeaveHr />} />
           </Route>
         </Routes>
       </BrowserRouter>
