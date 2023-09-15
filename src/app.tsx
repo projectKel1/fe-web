@@ -16,8 +16,10 @@ import LeaveEmployee from './pages/leave/leaveEmployee';
 import DashboardHr from './pages/dashboard/dashboardHr';
 import ReimbursementHr from './pages/reimbursement/reimbursementHr';
 import AttandanceHr from './pages/attendance/attendanceHr';
+import axios from 'axios';
 
 function App() {
+  axios.defaults.baseURL = 'https://hris-kelompok-1-32uzyeupwa-as.a.run.app'
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />

@@ -15,7 +15,7 @@ export default {
         bgCard: '#DCFCE7',
         bgMain: '#F9F9F9',
         hoverBtn: '#3C8273',
-        subTitle: '#737791'
+        subTitle: '#56576'
       },
       borderRadius: {
         cardBase: '20px',

@@ -1,5 +1,5 @@
 interface Button {
-    textBtn: string
+    textBtn: string | any
     color: string
     onClick: any
 }

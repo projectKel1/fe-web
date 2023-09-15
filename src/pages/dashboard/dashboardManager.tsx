@@ -6,7 +6,7 @@ const DashboardManager = () => {
     <section className="p-10">
       <div>
         <h1 className="font-semibold text-lg">
-          Selamat Datang, Anda Login Sebagai HR
+          Selamat Datang, Anda Login Sebagai Manager
         </h1>
       </div>
       <div className="flex flex-wrap gap-10 py-4">
