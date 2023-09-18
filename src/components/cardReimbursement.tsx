@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import Button from './button'
 import Popup from './popup'
-import { LuXCircle } from 'react-icons/lu'
 import {motion} from 'framer-motion'
+import { useFormik } from 'formik'
+import { validateReimbursement } from '../auth/yup'
+import axios from 'axios'
+import toast from 'react-hot-toast'
+import Cookies from 'js-cookie'
 interface Reimbursement {
     tittle: string
     subTittle: string
@@ -15,6 +19,27 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
     const handleClose = () => {
         setOpen(false)
     }
+    const formik = useFormik({
+        initialValues: {
+          information: '',
+          type: '',
+        },
+        validationSchema: validateReimbursement,
+        onSubmit: (values) => {
+          axios
+            .post(`/login`, {
+              information: values.information,
+              type: values.type,
+            })
+            .then((response) => {
+              toast.success(response.data.message);
+              Cookies.set('data', JSON.stringify(response.data));
+            })
+            .catch((error) => {
+              toast.error('Mohon coba lagi nanti.');
+            });
+        },
+      });
     return (
         <div className="rounded-cardBase bg-white w-full p-10">
             <div>
@@ -41,7 +66,7 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
                                     <h3 className="mb-4 text-xl font-bold text-black">
                                         Request Reimbursement
                                     </h3>
-                                    <form className="space-y-4" action="#">
+                                    <form onSubmit={formik.handleSubmit} className="space-y-4" action="#">
                                         <div>
                                             <label className="block text-sm font-medium text-black">
                                                 Information
@@ -71,7 +96,7 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
                                                 Cancel
                                             </button>
                                             <button
-                                                type="button"
+                                                type="submit"
                                                 className=" text-white bg-bgBtn font-semibold rounded-cardBase text-sm px-8 py-2.5 text-center"
                                             >
                                                 Add
