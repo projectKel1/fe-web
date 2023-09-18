@@ -6,7 +6,7 @@ const ReimbursmentEmployee = () => {
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2">
         <CardReimbursement
-          tittle="Reimbursement Manager"
+          tittle="Reimbursement Employee"
           subTittle="Check Reimbursement here"
         />
       </div>
