@@ -49,13 +49,13 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
     }]
     const navigate = useNavigate()
     useEffect(() => {
-        if (!Cookies.get('data')) {
-            navigate('/login')
-        } else {
-            const tempData: any = Cookies.get('data')
-            const data = JSON.parse(tempData)
-            setData(data.data.role_id)
-        }
+        // if (!Cookies.get('data')) {
+        //     navigate('/login')
+        // } else {
+            // const tempData: any = Cookies.get('data')
+            // const data = JSON.parse(tempData)
+            // setData(data.data.role_id)
+        // }
     }, [])
     return (
         <div>
@@ -76,9 +76,9 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
                 </div>
                 {
                     sideLink.map((element, index) => {
-                        if ((element.to === "/Company" || element.to === "/dashboard-hr" || element.to === "/list-employee") && data === 1) {
-                            return null
-                        }
+                        // if ((element.to === "/Company" || element.to === "/dashboard-hr" || element.to === "/list-employee") && data === 1) {
+                        //     return null
+                        // }
                         return (
                             <div key={index}>
                                 <div className="space-y-2 font-medium flex px-4">

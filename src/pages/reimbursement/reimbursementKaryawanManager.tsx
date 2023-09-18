@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+// import axios from 'axios'
+// import { useEffect, useState } from 'react'
 interface Data {
     nama: string,
     keterangan: string,
@@ -7,19 +7,19 @@ interface Data {
     status: string
 }
 const ReimbursementKaryawanManager = () => {
-    const [data, setData] = useState<Data[]>([])
-    const getData = async () => {
-        try {
-            const response = await axios.get(`https://62c3aad4876c4700f540123e.mockapi.io/hrReimburstmen`)
-            console.log(response.data)
-            setData(response.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    useEffect(() => {
-        getData()
-    }, [])
+    // const [data, setData] = useState<Data[]>([])
+    // const getData = async () => {
+    //     try {
+    //         const response = await axios.get(`https://62c3aad4876c4700f540123e.mockapi.io/hrReimburstmen`)
+    //         console.log(response.data)
+    //         setData(response.data)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    // useEffect(() => {
+    //     getData()
+    // }, [])
     return (
         <div className="p-10 h-full bg-bgMain">
             <div className="py-2 w-full bg-white rounded-cardBase">
@@ -54,7 +54,7 @@ const ReimbursementKaryawanManager = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
+                                {/* {
                                     data ? data.map((element, index) => (
                                         <tr key={index} className={`${index % 2 == 0 ? 'bg-white hover:bg-gray-300' : 'bg-bgCard hover:bg-green-200'} border-b`}>
                                             <td scope="row" className="px-6 py-4 whitespace-nowrap">
@@ -89,7 +89,7 @@ const ReimbursementKaryawanManager = () => {
                                             </td>
                                         </tr>
                                     )) : null
-                                }
+                                } */}
                             </tbody>
                         </table>
                     </div>

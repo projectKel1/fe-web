@@ -1,23 +1,23 @@
 import { LuActivity } from "react-icons/lu"
 import CardDash from "../../components/cardDash"
 import axios from "axios"
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 
 const DashboardManager = () => {
-  const [reimbursement, setReimbursement] = useState()
-  const getData = async () => {
-    try {
-      const response = await axios.get(`https://node.flattenbot.site/request-reimbursment`)
-      console.log(response)
-      setReimbursement(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    getData()
-  }, [])
-  console.log(reimbursement)
+  // const [reimbursement, setReimbursement] = useState()
+  // const getData = async () => {
+  //   try {
+  //     const response = await axios.get(`https://node.flattenbot.site/request-reimbursment`)
+  //     console.log(response)
+  //     setReimbursement(response.data)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  // useEffect(() => {
+  //   getData()
+  // }, [])
+  // console.log(reimbursement)
 
   return (
     <section className="p-10">
