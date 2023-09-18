@@ -1,25 +1,26 @@
 import human from '../assets/human.png'
 const CardWelcome = () => {
     return (
-        <div className="bg-[#D3FCD2]">
+        <div className="bg-[#dcf4e6] shadow-lg rounded-xl p-4">
             <div className="flex">
                 <div className="w-1/2">
-                    <div>
-                        Welcome back 👋
-                        Jaydon Frankie
+                    <div className='py-6 text-[#004B50] text-2xl font-semibold'>
+                        <h1>
+                            Welcome back 👋
+                        </h1>
+                        <h1>
+                            Jaydon Frankie
+                        </h1>
                     </div>
                     <div>
-                        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.
-                    </div>
-                    <div>
-                        <button>
-                            Go Now
-                        </button>
+                        <p className='text-[#004B50] font-normal text-lg'>
+                            If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.
+                        </p>
                     </div>
                 </div>
-                <div className="w-1/2">
+                <div className="w-1/2 flex justify-center items-center">
                     <div>
-                        <img src={human} className='w-auto' alt="" />
+                        <img src={human} className='w-56' alt="" />
                     </div>
                 </div>
             </div>
