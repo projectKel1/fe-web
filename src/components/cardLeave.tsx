@@ -25,7 +25,7 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
         <div>
           <Button
             onClick={handleOpen}
-            textBtn={`${(<LuPlus size={20} />)}Add Request`}
+            textBtn='Add Request'
             color="bg-bgBtn"
           />
         </div>
@@ -37,14 +37,6 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
             className="relative w-full max-w-md max-h-full"
           >
             <div className="relative bg-white rounded-lg shadow">
-              <button
-                type="button"
-                onClick={() => handleClose()}
-                className="absolute top-3 right-2.5 bg-transparent hover:bg-gray-200 rounded-full text-black w-8 h-8 inline-flex justify-center items-center"
-                data-modal-hide="authentication-modal"
-              >
-                <LuXCircle size={20} />
-              </button>
               <div className="px-6 py-6 lg:px-8">
                 <h3 className="mb-4 text-xl font-bold text-black">
                   Request Leave
