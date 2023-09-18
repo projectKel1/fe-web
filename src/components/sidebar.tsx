@@ -77,8 +77,8 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
   }, []);
   return (
     <div>
-      <div className="space-y-4 h-screen ">
-        <div className="ml-7 py-5 flex gap-2 items-center">
+      <div className="space-y-4 h-screen">
+        <div className="px-4 py-5 flex gap-2 items-center">
           <div>
             <img src={Logo} className="w-10" alt="" />
           </div>
@@ -90,12 +90,12 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
           // }
           return (
             <div key={index}>
-              <div className="space-y-2 font-medium flex px-4">
+              <div className="space-y-2 font-medium px-4">
                 <Link to={element.to}>
                   <div
-                    className={`cursor-pointer w-48 flex items-center py-2 px-4 rounded-lg hover:w-48 hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${
+                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${
                       location.pathname === element.to
-                        ? 'bg-bgBtn rounded-xl shadow-lg text-white font-bold'
+                        ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
                         : 'font-semibold'
                     }`}
                   >
