@@ -1,25 +1,51 @@
-import { AnimatePresence } from 'framer-motion';
-import { FC } from 'react'
+import { FC, useEffect, useRef,CSSProperties } from 'react'
 interface PopupProps {
     onConfirm: () => void;
     children?: React.ReactNode;
 }
 const Popup: FC<PopupProps> = ({ onConfirm, children }) => {
-    const preference = {
-        modalOverlay: !onConfirm ? 'hidden' : 'absolute h-full flex justify-center items-center bg-gray-300 inset-0 z-50 shadow-lg bg-opacity-50',
-        modalContent: 'w-2/5 p-4 flex items-center justify-center',
+    const modalRef = useRef<HTMLDivElement | null>(null);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+            onConfirm();
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            window.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [onConfirm]);
+    const modalOverlayStyle:CSSProperties = {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        background: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: '10',
+    };
+
+    const modalContentStyle:CSSProperties = {
+        borderRadius: '8px',
     };
     return (
         <div>
-            <div className={preference.modalOverlay}>
-                <AnimatePresence>
-                    <div className={preference.modalContent}>
-                        {children}
-                    </div>
-                </AnimatePresence>
+            <div style={modalOverlayStyle}>
+                <div ref={modalRef} style={modalContentStyle}>
+                    {children}
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
+
+
 
 export default Popup
