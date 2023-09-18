@@ -1,6 +1,7 @@
 import { LuActivity } from "react-icons/lu"
 import CardDash from "../../components/cardDash"
 import axios from "axios"
+import CardWelcome from "../../components/cardWelcome"
 // import { useEffect, useState } from 'react'
 
 const DashboardManager = () => {
@@ -26,7 +27,14 @@ const DashboardManager = () => {
           Selamat Datang, Anda Login Sebagai Manager
         </h1>
       </div>
-      <div className="flex flex-wrap gap-10 py-4">
+      <div className="row">
+        <div className="grid grid-cols-12 gap-2">
+          <div className="col-span-8">
+            <CardWelcome />
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-wrap gap-5 py-4">
         <CardDash tittle="Jumlah Cuti Bulan ini" count="56" icons={<LuActivity />} />
         <CardDash tittle="Target Bulan ini" count="90" icons={<LuActivity />} />
         <CardDash tittle="Request Cuti Bawahan" count="5" icons={<LuActivity />} />
