@@ -1,8 +1,42 @@
 import { LuFileEdit, LuTrash2 } from "react-icons/lu";
+import { useEffect, useState } from "react";
 
 import CardHr from "../../components/cardHr";
+import Cookies from "js-cookie";
+import axios from "axios";
+
+interface EmployeeData {
+  id: number;
+  fullname: string;
+  email: string;
+  status: string;
+}
 
 const EmployeeHr = () => {
+  const [employeeList, setEmployeeList] = useState<EmployeeData[]>([]);
+
+  useEffect(() => {
+    getEmployee();
+  }, []);
+
+  const getEmployee = () => {
+    const tempData: any = Cookies.get("data");
+    const data = JSON.parse(tempData);
+    const token = data.data.token;
+    axios
+      .get(`/users?page=1&size=5`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setEmployeeList(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2">
@@ -43,38 +77,28 @@ const EmployeeHr = () => {
                     </tr>
                   </thead>
                   <tbody className="text-gray-800">
-                    <tr className="bg-white border-b ">
-                      <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                        Abdul
-                      </td>
-                      <td className="px-6 py-4">abdul@mail.com</td>
-                      <td className="px-6 py-4">Active</td>
-                      <td className="px-6 py-4">Male</td>
-                      <td className="px-6 py-4 flex gap-5">
-                        <div className="text-green-800 cursor-pointer">
-                          <LuFileEdit size={25} />
-                        </div>
-                        <div className="text-red-800">
-                          <LuTrash2 size={25} />
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b bg-bgCard">
-                      <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                        Abdul
-                      </td>
-                      <td className="px-6 py-4">abdul@mail.com</td>
-                      <td className="px-6 py-4">Active</td>
-                      <td className="px-6 py-4">Male</td>
-                      <td className="px-6 py-4 flex gap-5">
-                        <div className="text-green-800 cursor-pointer">
-                          <LuFileEdit size={25} />
-                        </div>
-                        <div className="text-red-800">
-                          <LuTrash2 size={25} />
-                        </div>
-                      </td>
-                    </tr>
+                    {employeeList &&
+                      employeeList.map((item, index) => (
+                        <tr className={`${index % 2 === 0 ? "bg-white" : "bg-bgCard"} border-b`}>
+                          <td
+                            scope="row"
+                            className="px-6 py-4 whitespace-nowrap"
+                          >
+                            {item?.fullname}
+                          </td>
+                          <td className="px-6 py-4">{item?.email}</td>
+                          <td className="px-6 py-4">{item?.status}</td>
+                          <td className="px-6 py-4">-</td>
+                          <td className="px-6 py-4 flex gap-5">
+                            <div className="text-green-800 cursor-pointer">
+                              <LuFileEdit size={25} />
+                            </div>
+                            <div className="text-red-800">
+                              <LuTrash2 size={25} />
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
