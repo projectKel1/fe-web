@@ -7,6 +7,7 @@ import {
   LuUser2,
   LuCircleDollarSign,
   LuBriefcase,
+  LuUsers,
 } from 'react-icons/lu';
 import Logo from '../assets/logo.png';
 import React, { useEffect, useState } from 'react';
@@ -20,12 +21,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
 
   const sideLink = [
     {
-      to: '/dashboard-manager',
-      url: <LuPieChart size={25} />,
-      name: 'Dashboard',
-    },
-    {
-      to: '/dashboard-hr',
+      to: '/dashboard',
       url: <LuPieChart size={25} />,
       name: 'Dashboard',
     },
@@ -43,6 +39,11 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       to: '/list-employee',
       url: <LuUser2 size={25} />,
       name: 'List Employee',
+    },
+    {
+      to: '/data-all-user',
+      url: <LuUsers size={25} />,
+      name: 'Data User',
     },
     {
       to: '/Company',
