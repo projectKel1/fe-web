@@ -9,6 +9,7 @@ import {
   LuBriefcase,
   LuUsers,
   LuRollerCoaster,
+  LuLayers,
 } from 'react-icons/lu';
 import Logo from '../assets/logo.png';
 import React, { useEffect, useState } from 'react';
@@ -50,6 +51,11 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       to: '/role',
       url: <LuRollerCoaster size={25} />,
       name: 'Data Role',
+    },
+    {
+      to: '/level',
+      url: <LuLayers size={25} />,
+      name: 'Data Level',
     },
     {
       to: '/Company',
