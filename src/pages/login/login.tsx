@@ -95,7 +95,7 @@ const Login = () => {
                 <label className="mb-2 text-sm font-semibold ">Password</label>
                 <div className="relative">
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
