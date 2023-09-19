@@ -1,9 +1,7 @@
 import human from '../assets/human.png'
 import Cookies from 'js-cookie'
 const CardWelcome = () => {
-    const tempData: any = Cookies.get('data')
-    const Data = JSON.parse(tempData)
-    const getRole = Data.data.role_name.toLowerCase()
+    const role = Cookies.get('role')
     return (
         <div className="bg-[#dcf4e6] shadow-lg rounded-xl p-4">
             <div className="flex">
@@ -13,7 +11,7 @@ const CardWelcome = () => {
                             Welcome back 👋
                         </h1>
                         <h1>
-                            {getRole}
+                            {role}
                         </h1>
                     </div>
                     <div>

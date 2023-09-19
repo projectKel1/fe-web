@@ -23,10 +23,8 @@ const DataRole = () => {
     const handleDeleteClose = () => {
         setIsDelete(false);
     };
+    const token: any = Cookies.get('token')
     const getRole = () => {
-        const tempData: any = Cookies.get('data')
-        const data = JSON.parse(tempData)
-        const token = data.data.token
         axios.get(`/roles`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -46,9 +44,6 @@ const DataRole = () => {
         },
         validationSchema: validateRole,
         onSubmit: (values) => {
-            const tempData: any = Cookies.get('data')
-            const data = JSON.parse(tempData)
-            const token = data.data.token
             axios
                 .put(`/roles/${dataid?.id}`, {
                     role_name: values.role_name,
@@ -68,9 +63,6 @@ const DataRole = () => {
         },
     });
     const handleDel = () => {
-        const tempData: any = Cookies.get('data')
-        const data = JSON.parse(tempData)
-        const token = data.data.token
         axios.delete(`/roles/${dataid?.id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
