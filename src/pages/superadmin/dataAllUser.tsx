@@ -17,9 +17,7 @@ interface Data {
 const DataAllUser = () => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<Data[]>([]);
-  const [startIndex, setStartIndex] = useState(0);
-  const [currentNumber, setCurrentNumber] = useState(1);
-  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleOpen = () => {
     setOpen(true);
@@ -28,16 +26,19 @@ const DataAllUser = () => {
     setOpen(false);
   };
 
-  const getData = async () => {
-    const tempData: any = Cookies.get('data')
-    const data = JSON.parse(tempData)
-    const token = data.data.token
+  const getData = async (page: number) => {
+    const tempData: any = Cookies.get('data');
+    const data = JSON.parse(tempData);
+    const token = data.data.token;
     try {
-      const response = await axios.get(`http://34.101.39.199/users`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `http://34.101.39.199/users?page=${page}&size=5`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log(response.data.Data);
       setData(response.data.data);
     } catch {
@@ -46,20 +47,16 @@ const DataAllUser = () => {
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    getData(currentPage);
+  }, [currentPage]);
 
   const nextPage = () => {
-    if (startIndex + itemsPerPage < data.length) {
-      setStartIndex(startIndex + itemsPerPage);
-      setCurrentNumber(currentNumber + itemsPerPage);
-    }
+    setCurrentPage(currentPage + 1);
   };
 
   const prevPage = () => {
-    if (startIndex - itemsPerPage >= 0) {
-      setStartIndex(startIndex - itemsPerPage);
-      setCurrentNumber(currentNumber - itemsPerPage);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
@@ -193,41 +190,44 @@ const DataAllUser = () => {
             </tr>
           </thead>
           <tbody className="text-gray-800">
-            {data
-              .slice(startIndex, startIndex + itemsPerPage)
-              .map((item: any, index: any) => {
-                const bgColor =
-                  index % 2 === 0
-                    ? 'bg-white hover:bg-gray-300 '
-                    : 'bg-bgCard hover:bg-green-200';
-                return (
-                  <tr key={index} className={`${bgColor}`}>
-                    <td scope="row" className="px-6 py-4">
-                      {currentNumber + index}
-                    </td>
-                    <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                      {item.fullname}
-                    </td>
-                    <td className="px-6 py-4">{item.email}</td>
-                    <td className="px-6 py-4">{item.status}</td>
-                    <td className="px-6 py-4">{item.role_name}</td>
-                    <td className="px-6 py-4">{item.level_name}</td>
-                    <td className="px-6 py-4 flex gap-5">
-                      <div className="text-green-800 cursor-pointer">
-                        <LuFileEdit size={25} />
-                      </div>
-                      <div className="text-red-800">
-                        <LuTrash2 size={25} />
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
+            {data.map((item: any, index: any) => {
+              const bgColor =
+                index % 2 === 0
+                  ? 'bg-white hover:bg-gray-300 '
+                  : 'bg-bgCard hover:bg-green-200';
+              const rowNumber = (currentPage - 1) * 5 + index + 1;
+              return (
+                <tr key={index} className={`${bgColor}`}>
+                  <td scope="row" className="px-6 py-4">
+                    {rowNumber}
+                  </td>
+                  <td scope="row" className="px-6 py-4 whitespace-nowrap">
+                    {item.fullname}
+                  </td>
+                  <td className="px-6 py-4">{item.email}</td>
+                  <td className="px-6 py-4">{item.status}</td>
+                  <td className="px-6 py-4">{item.role_name}</td>
+                  <td className="px-6 py-4">{item.level_name}</td>
+                  <td className="px-6 py-4 flex gap-5">
+                    <div className="text-green-800 cursor-pointer">
+                      <LuFileEdit size={25} />
+                    </div>
+                    <div className="text-red-800">
+                      <LuTrash2 size={25} />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <div onClick={prevPage} className="flex justify-end space-x-4 m-3">
-        <button className="outline outline-bgBtn px-10 py-4 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-48">
+        <button
+          className={`outline outline-bgBtn px-10 py-4 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-48 ${
+            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+        >
           Previous
         </button>
         <button
