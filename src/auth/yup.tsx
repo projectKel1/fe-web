@@ -30,3 +30,6 @@ export const validateReimbursement = yup.object({
     information: yup.string().required(`information is required`),
     type: yup.string().required(`type is required`),
 })
+export const validateRole = yup.object({
+    role_name: yup.string().required(`Role is required`),
+})

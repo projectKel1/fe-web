@@ -21,6 +21,7 @@ import LeaveHr from './pages/leave/leaveHr';
 import CompanyHr from './pages/company/companyHr';
 import DataAllUser from './pages/superadmin/dataAllUser';
 import Profile from './pages/profile/profile';
+import DataRole from './pages/superadmin/dataRole';
 
 function App() {
   axios.defaults.baseURL = 'http://34.101.39.199';
@@ -59,7 +60,8 @@ function App() {
             <Route path="/employee-hr" element={<EmployeeHr />} />
             <Route path="/leave-hr" element={<LeaveHr />} />
             <Route path="/company-hr" element={<CompanyHr />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile/>} />
+            <Route path="/role" element={<DataRole/>} />
             <Route path="/data-all-user" element={<DataAllUser />} />
           </Route>
         </Routes>

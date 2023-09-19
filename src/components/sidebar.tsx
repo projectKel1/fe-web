@@ -8,6 +8,7 @@ import {
   LuCircleDollarSign,
   LuBriefcase,
   LuUsers,
+  LuRollerCoaster,
 } from 'react-icons/lu';
 import Logo from '../assets/logo.png';
 import React, { useEffect, useState } from 'react';
@@ -46,6 +47,11 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Data User',
     },
     {
+      to: '/role',
+      url: <LuRollerCoaster size={25} />,
+      name: 'Data Role',
+    },
+    {
       to: '/Company',
       url: <LuBuilding size={25} />,
       name: 'Company',
@@ -66,16 +72,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Leave',
     },
   ];
-  const navigate = useNavigate();
-  useEffect(() => {
-    // if (!Cookies.get('data')) {
-    //     navigate('/login')
-    // } else {
-    // const tempData: any = Cookies.get('data')
-    // const data = JSON.parse(tempData)
-    // setData(data.data.role_id)
-    // }
-  }, []);
+
   return (
     <div>
       <div className="space-y-4 h-screen">
