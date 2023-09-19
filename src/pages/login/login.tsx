@@ -27,8 +27,9 @@ const Login = () => {
         })
         .then((response) => {
           toast.success(response.data.message);
-          Cookies.set('data', JSON.stringify(response.data));
-          console.log(response.data)
+          Cookies.set('token', response.data.data.token)
+          const role = response.data.data.role_name
+          Cookies.set('role', role.toLowerCase())
           navigate('/dashboard')
           setStatus(false);
         })
@@ -45,7 +46,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-    if (Cookies.get('data')) {
+    if (Cookies.get('token')) {
       navigate('/dashboard');
     }
   }, []);

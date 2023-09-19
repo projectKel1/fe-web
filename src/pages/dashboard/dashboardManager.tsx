@@ -7,9 +7,6 @@ import Cookies from "js-cookie"
 import { useNavigate } from "react-router-dom"
 const DashboardManager = () => {
   const [usercount, setUsercount] = useState()
-  const tempData: any = Cookies.get('data')
-  const data = JSON.parse(tempData)
-  const role = data.data.role_name.toLowerCase()
   const getData = async () => {
     try {
       const response = await axios.get(`/users`)
@@ -20,7 +17,7 @@ const DashboardManager = () => {
   }
   const navigate = useNavigate()
   useEffect(() => {
-    if (!Cookies.get('data')) {
+    if (!Cookies.get('token')) {
       navigate('/login')
     }
     getData()
