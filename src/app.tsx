@@ -4,7 +4,6 @@ import Landing from './pages/landing/landing';
 import Login from './pages/login/login';
 import { Toaster } from 'react-hot-toast';
 import DashboardManager from './pages/dashboard/dashboardManager';
-import DashboardEmployee from './pages/dashboard/dashboardEmployee';
 import AttandanceManager from './pages/attendance/attandanceManager';
 import AttendanceEmployee from './pages/attendance/attendanceEmployee';
 import ReimbursementManager from './pages/reimbursement/reimbursementManager';
@@ -14,7 +13,6 @@ import TargetManager from './pages/target/targetManager';
 import TargetEmployee from './pages/target/targetEmployee';
 import LeaveManager from './pages/leave/leaveManager';
 import LeaveEmployee from './pages/leave/leaveEmployee';
-import DashboardHr from './pages/dashboard/dashboardHr';
 import ReimbursementHr from './pages/reimbursement/reimbursementHr';
 import AttandanceHr from './pages/attendance/attendanceHr';
 import axios from 'axios';
@@ -22,9 +20,10 @@ import EmployeeHr from './pages/employee/employeeHr';
 import LeaveHr from './pages/leave/leaveHr';
 import CompanyHr from './pages/company/companyHr';
 import DataAllUser from './pages/superadmin/dataAllUser';
+import Profile from './pages/profile/profile';
 
 function App() {
-  axios.defaults.baseURL = 'https://hris-kelompok-1-32uzyeupwa-as.a.run.app';
+  axios.defaults.baseURL = 'http://34.101.39.199';
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
@@ -33,9 +32,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Layout />}>
-            <Route path="/dashboard-manager" element={<DashboardManager />} />
-            <Route path="/dashboard-employee" element={<DashboardEmployee />} />
-            <Route path="/dashboard-hr" element={<DashboardHr />} />
+            <Route path="/dashboard" element={<DashboardManager />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
             <Route
               path="/attendance-employee"
@@ -62,6 +59,7 @@ function App() {
             <Route path="/employee-hr" element={<EmployeeHr />} />
             <Route path="/leave-hr" element={<LeaveHr />} />
             <Route path="/company-hr" element={<CompanyHr />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/data-all-user" element={<DataAllUser />} />
           </Route>
         </Routes>

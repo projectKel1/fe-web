@@ -28,12 +28,8 @@ const Login = () => {
         .then((response) => {
           toast.success(response.data.message);
           Cookies.set('data', JSON.stringify(response.data));
-          if (response.data.data.role_id === 1) {
-            navigate('/dashboard-manager');
-          }
-          if (response.data.data.role_id == 2) {
-            navigate('/dashboard-hr');
-          }
+          console.log(response.data)
+          navigate('/dashboard')
           setStatus(false);
         })
         .catch((error) => {
@@ -50,11 +46,7 @@ const Login = () => {
 
   useEffect(() => {
     if (Cookies.get('data')) {
-      const tempData: any = Cookies.get('data');
-      const Data = JSON.parse(tempData);
-      if (Data.data.role_id === 1) {
-        navigate('/dashboard-manager');
-      }
+      navigate('/dashboard');
     }
   }, []);
 
@@ -87,11 +79,10 @@ const Login = () => {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   autoComplete="off"
-                  className={`bg-gray-50 border ${
-                    formik.touched.email && formik.errors.email
-                      ? `border-red-800`
-                      : 'border-gray-300 border-2'
-                  } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
+                  className={`bg-gray-50 border ${formik.touched.email && formik.errors.email
+                    ? `border-red-800`
+                    : 'border-gray-300 border-2'
+                    } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                   placeholder="email@email.com"
                 />
                 {formik.touched.email && formik.errors.email ? (
@@ -108,11 +99,10 @@ const Login = () => {
                     name="password"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    className={`bg-gray-50 border relative ${
-                      formik.touched.email && formik.errors.email
-                        ? `border-red-800`
-                        : 'border-gray-300 border-2'
-                    } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
+                    className={`bg-gray-50 border relative ${formik.touched.email && formik.errors.email
+                      ? `border-red-800`
+                      : 'border-gray-300 border-2'
+                      } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                     placeholder="••••••••"
                   />
                   <button

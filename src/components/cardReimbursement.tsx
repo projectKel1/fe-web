@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Button from './button'
 import Popup from './popup'
-import {motion} from 'framer-motion'
 import { useFormik } from 'formik'
 import { validateReimbursement } from '../auth/yup'
 import axios from 'axios'
@@ -21,25 +20,25 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
     }
     const formik = useFormik({
         initialValues: {
-          information: '',
-          type: '',
+            information: '',
+            type: '',
         },
         validationSchema: validateReimbursement,
         onSubmit: (values) => {
-          axios
-            .post(`/login`, {
-              information: values.information,
-              type: values.type,
-            })
-            .then((response) => {
-              toast.success(response.data.message);
-              Cookies.set('data', JSON.stringify(response.data));
-            })
-            .catch((error) => {
-              toast.error('Mohon coba lagi nanti.');
-            });
+            axios
+                .post(`/login`, {
+                    information: values.information,
+                    type: values.type,
+                })
+                .then((response) => {
+                    toast.success(response.data.message);
+                    Cookies.set('data', JSON.stringify(response.data));
+                })
+                .catch((error) => {
+                    toast.error('Mohon coba lagi nanti.');
+                });
         },
-      });
+    });
     return (
         <div className="rounded-cardBase bg-white w-full p-10">
             <div>
@@ -58,9 +57,7 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
             {
                 open ? (
                     <Popup onConfirm={handleClose}>
-                        <motion.div
-                        animate={{ y: 10 }}
-                        className="relative w-full max-w-md max-h-full">
+                        <div className="relative w-full max-w-md max-h-full">
                             <div className="relative bg-white rounded-lg shadow">
                                 <div className="px-6 py-6 lg:px-8">
                                     <h3 className="mb-4 text-xl font-bold text-black">
@@ -105,7 +102,7 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
                                     </form>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     </Popup>
                 ) : null
             }

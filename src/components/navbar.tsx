@@ -1,14 +1,43 @@
+import Cookies from "js-cookie";
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const [open, setOpen] = useState(false)
+  const tempData: any = Cookies.get('data')
+  const Data = JSON.parse(tempData)
+  const getRole = Data.data.role_name.toLowerCase()
+  const navigate = useNavigate()
+
+  const handleOut = () => {
+    Cookies.remove('data')
+    navigate('/login')
+  }
   return (
     <div className="shadow-lg w-full">
-      <div className="flex justify-end mx-6 my-4 items-center cursor-pointer">
-        <h1 className="font-semibold pr-2 text-lg">Abdul</h1>
-        <img
-          className="w-8 h-8 rounded-full"
-          src="data:image/jpeg;base64,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"
-          alt=""
-        />
+      <div className="flex justify-end mx-6 my-4 items-center ">
+        <h1 className="font-semibold pr-2 text-lg">Hi, {getRole}</h1>
+        <div onClick={() => setOpen(!open)} className="cursor-pointer" >
+          <img className=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 " src="https://placekitten.com/200/300" alt="Bordered avatar"></img>
+        </div>
       </div>
+      {
+        open ? (
+          <motion.div
+            animate={{ y: 10 }}
+            exit={{ opacity: 0 }}
+            className="z-10 absolute right-10 shadow-lg bg-white divide-y divide-gray-100 rounded-lg w-44">
+            <ul className="py-2 font-semibold">
+              <li>
+                <div onClick={() => navigate('/profile')} className="block px-4 py-2 hover:bg-gray-100 ">Profile</div>
+              </li>
+            </ul>
+            <div className="py-1">
+              <div onClick={handleOut} className="block px-4 py-2 hover:bg-gray-100">Sign out</div>
+            </div>
+          </motion.div>
+        ) : null
+      }
     </div>
   );
 };

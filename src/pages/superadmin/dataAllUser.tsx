@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Popup from '../../components/popup';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-
+import Cookies from 'js-cookie';
 interface Data {
   fullname: string;
   email: string;
@@ -29,10 +29,13 @@ const DataAllUser = () => {
   };
 
   const getData = async () => {
+    const tempData: any = Cookies.get('data')
+    const data = JSON.parse(tempData)
+    const token = data.data.token
     try {
       const response = await axios.get(`http://34.101.39.199/users`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJjb21wYW55X25hbWUiOiJQVC4gSmFwZmEgSW5kb25lc2lhIiwiZXhwIjoxNjk1MTE3MjIzLCJsZXZlbCI6IkVNUExPWUVFIiwicm9sZV9uYW1lIjoiU3VwZXJhZG1pbiIsInVzZXJJZCI6Mn0.iTD1ReCB6TyTH4ELNmpbF3nJYF1LgaiZn4S8iPHCazc`,
+          Authorization: `Bearer ${token}`,
         },
       });
       console.log(response.data.Data);
