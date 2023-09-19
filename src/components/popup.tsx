@@ -1,4 +1,5 @@
-import { FC, useEffect, useRef,CSSProperties } from 'react'
+import { FC, useEffect, useRef, CSSProperties } from 'react'
+import { motion } from 'framer-motion'
 interface PopupProps {
     onConfirm: () => void;
     children?: React.ReactNode;
@@ -19,7 +20,7 @@ const Popup: FC<PopupProps> = ({ onConfirm, children }) => {
             window.removeEventListener('mousedown', handleClickOutside);
         };
     }, [onConfirm]);
-    const modalOverlayStyle:CSSProperties = {
+    const modalOverlayStyle: CSSProperties = {
         position: 'fixed',
         top: '0',
         left: '0',
@@ -32,15 +33,17 @@ const Popup: FC<PopupProps> = ({ onConfirm, children }) => {
         zIndex: '10',
     };
 
-    const modalContentStyle:CSSProperties = {
+    const modalContentStyle: CSSProperties = {
         borderRadius: '8px',
     };
     return (
         <div>
             <div style={modalOverlayStyle}>
-                <div ref={modalRef} style={modalContentStyle}>
+                <motion.div
+                    animate={{ y: 10 }}
+                    ref={modalRef} style={modalContentStyle}>
                     {children}
-                </div>
+                </motion.div>
             </div>
         </div>
     );
