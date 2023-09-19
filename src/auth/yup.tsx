@@ -38,10 +38,16 @@ export const validateReimbursement = yup.object({
   information: yup.string().required(`information is required`),
   type: yup.string().required(`type is required`),
 });
+
 export const validateRole = yup.object({
   role_name: yup.string().required(`Role is required`),
 });
 
 export const validateLevel = yup.object({
   level: yup.string().required(`Role is required`),
+});
+
+export const validateEditReimbursement = yup.object({
+  description: yup.string().required(`Information is required`),
+  type: yup.mixed().required(`type Reimbursement is required`),
 });

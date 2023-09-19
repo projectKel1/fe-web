@@ -12,6 +12,7 @@ interface Reimbursement {
 }
 const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
     const [open, setOpen] = useState(false)
+    const token = Cookies.get('token')
     const handleOpen = () => {
         setOpen(true)
     }
@@ -21,21 +22,32 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
     const formik = useFormik({
         initialValues: {
             information: '',
-            type: '',
+            type: 'travel',
+            nominal: '',
+            url_proof: ''
         },
         validationSchema: validateReimbursement,
         onSubmit: (values) => {
+            console.log(values.type)
             axios
-                .post(`/login`, {
-                    information: values.information,
+                .post(`https://node.flattenbot.site/request-reimbursement`, {
+                    description: values.information,
                     type: values.type,
+                    nominal: values.nominal,
+                    url_proof: values.url_proof
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 })
                 .then((response) => {
                     toast.success(response.data.message);
-                    Cookies.set('data', JSON.stringify(response.data));
+                    console.log(response)
+                    setOpen(false)
                 })
                 .catch((error) => {
-                    toast.error('Mohon coba lagi nanti.');
+                    console.log(error.response.data)
+                    toast.error("Ada Masalah Silahkan Coba Lagi")
                 });
         },
     });
@@ -65,24 +77,49 @@ const CardReimbursement: React.FC<Reimbursement> = ({ tittle, subTittle }) => {
                                     </h3>
                                     <form onSubmit={formik.handleSubmit} className="space-y-4" action="#">
                                         <div>
-                                            <label className="block text-sm font-medium text-black">
+                                            <label className="block py-1 text-sm font-medium text-black">
                                                 Information
                                             </label>
                                             <input
                                                 type="text"
-                                                name="text"
+                                                name="information"
+                                                onChange={formik.handleChange}
                                                 className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-black">
-                                                Type Reimbursement
+                                            <label className="block py-1 text-sm font-medium text-black">
+                                                Nominal
                                             </label>
                                             <input
                                                 type="text"
-                                                name="text"
+                                                name="nominal"
+                                                onChange={formik.handleChange}
                                                 className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
                                             />
+                                        </div>
+                                        <div>
+                                            <label className="block py-1 text-sm font-medium text-black">
+                                                File
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="url_proof"
+                                                onChange={formik.handleChange}
+                                                className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block py-1 text-sm font-medium text-black">
+                                                Type Reimbursement
+                                            </label>
+                                            <select onChange={formik.handleChange} value={formik.values.type} className=' text-sm px-3 py-2 w-full border font-medium text-black' name="type" id="">
+                                                <option value="travel">Travel</option>
+                                                <option value="business">Business</option>
+                                                <option value="healthcare">Healtcare</option>
+                                                <option value="tax">Tax</option>
+                                                <option value="others">Others</option>
+                                            </select>
                                         </div>
                                         <div className="flex gap-2 py-2 justify-end">
                                             <button

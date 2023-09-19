@@ -36,9 +36,7 @@ const Profile = () => {
     no_npwp: '',
   })
   const getProfile = () => {
-    const tempData: any = Cookies.get('data')
-    const data = JSON.parse(tempData)
-    const token = data.data.token
+    const token: any = Cookies.get('token')
     axios.get('/my-profile', {
       headers: {
         Authorization: `Bearer ${token}`
