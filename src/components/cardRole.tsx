@@ -24,9 +24,7 @@ const CardRole: React.FC<CardRole> = ({ title, subTitle }) => {
         },
         validationSchema: validateRole,
         onSubmit: (values) => {
-            const tempData: any = Cookies.get('data')
-            const data = JSON.parse(tempData)
-            const token = data.data.token
+            const token = Cookies.get('token')
             axios
                 .post(`/roles`, {
                     role_name: values.role_name,

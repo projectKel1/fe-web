@@ -12,7 +12,7 @@ const Layout = () => {
     nonExpand: { width: '15%' },
   };
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <motion.div
         animate={open ? 'expand' : 'nonExpand'}
         variants={variant}

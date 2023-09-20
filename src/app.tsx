@@ -11,7 +11,7 @@ import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKar
 import ReimbursmentEmployee from './pages/reimbursement/reimbursmentEmployee';
 import TargetManager from './pages/target/targetManager';
 import TargetEmployee from './pages/target/targetEmployee';
-import LeaveManager from './pages/leave/leaveManager';
+import LeaveManager from './pages/leave/leaveManagerEmployee';
 import LeaveEmployee from './pages/leave/leaveEmployee';
 import ReimbursementHr from './pages/reimbursement/reimbursementHr';
 import AttandanceHr from './pages/attendance/attendanceHr';
@@ -23,6 +23,8 @@ import DataAllUser from './pages/superadmin/dataAllUser';
 import Profile from './pages/profile/profile';
 import DataRole from './pages/superadmin/dataRole';
 import EmployeeLevel from './pages/superadmin/employeeLevel';
+import LeaveManagerEmployee from './pages/leave/leaveManager';
+import ReimbursementManagerEmployee from './pages/reimbursement/reimbursementManagerEmployee';
 import DataCompany from './pages/superadmin/dataCompany';
 
 function App() {
@@ -37,36 +39,26 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard" element={<DashboardManager />} />
             <Route path="/attendance-manager" element={<AttandanceManager />} />
-            <Route
-              path="/attendance-employee"
-              element={<AttendanceEmployee />}
-            />
-            <Route
-              path="/reimbursement-manager"
-              element={<ReimbursementManager />}
-            />
-            <Route
-              path="/reimbursement-karyawan-manager"
-              element={<ReimbursementKaryawanManager />}
-            />
-            <Route
-              path="/reimbursement-employee"
-              element={<ReimbursmentEmployee />}
-            />
+            <Route path="/attendance-employee" element={<AttendanceEmployee />} />
+            <Route path="/reimbursement-manager" element={<ReimbursementManager />} />
+            <Route path="/reimbursement-karyawan-manager" element={<ReimbursementKaryawanManager />} />
+            <Route path="/reimbursement-manager-employee" element={<ReimbursementManagerEmployee />} />
+            <Route path="/reimbursement-employee" element={<ReimbursmentEmployee />} />
             <Route path="/reimbursement-hr" element={<ReimbursementHr />} />
             <Route path="/target-manager" element={<TargetManager />} />
             <Route path="/target-employee" element={<TargetEmployee />} />
+            <Route path="/leave-manager-employee" element={<LeaveManagerEmployee />} />
             <Route path="/leave-manager" element={<LeaveManager />} />
             <Route path="/leave-employee" element={<LeaveEmployee />} />
             <Route path="/attendance-hr" element={<AttandanceHr />} />
             <Route path="/employee-hr" element={<EmployeeHr />} />
             <Route path="/leave-hr" element={<LeaveHr />} />
-            <Route path="/company-hr" element={<CompanyHr />} />
+            <Route path="/company" element={<CompanyHr />} />
+            <Route path="/data-company" element={<DataCompany />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/role" element={<DataRole />} />
-            <Route path="/data-all-user" element={<DataAllUser />} />
+            <Route path="/data-user" element={<DataAllUser />} />
             <Route path="/level" element={<EmployeeLevel />} />
-            <Route path="/Company" element={<DataCompany />} />
           </Route>
         </Routes>
       </BrowserRouter>

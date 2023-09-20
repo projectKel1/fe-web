@@ -29,7 +29,9 @@ const Login = () => {
           toast.success(response.data.message);
           Cookies.set('token', response.data.data.token)
           const role = response.data.data.role_name
+          const level = response.data.data.level
           Cookies.set('role', role.toLowerCase())
+          Cookies.set('level', level.toLowerCase())
           navigate('/dashboard')
           setStatus(false);
         })

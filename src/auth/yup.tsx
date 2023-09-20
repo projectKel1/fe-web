@@ -46,6 +46,11 @@ export const validateRole = yup.object({
 export const validateLevel = yup.object({
   level: yup.string().required(`Role is required`),
 });
+export const validateCreateUser = yup.object({
+  fullname: yup.string().required(`full Name is required`),
+  email: yup.string().required(`Email is required`),
+  password: yup.string().required(`Password Name is required`),
+});
 
 export const validateEditReimbursement = yup.object({
   description: yup.string().required(`Information is required`),

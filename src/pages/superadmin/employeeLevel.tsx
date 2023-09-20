@@ -30,9 +30,7 @@ const EmployeeLevel = () => {
     setIsDelete(false);
   };
   const getLevel = () => {
-    const tempData: any = Cookies.get('data');
-    const data = JSON.parse(tempData);
-    const token = data.data.token;
+    const token = Cookies.get('token');
     axios
       .get(`/employee-levels`, {
         headers: {

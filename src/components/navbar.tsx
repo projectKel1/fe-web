@@ -10,6 +10,7 @@ const Navbar = () => {
   const handleOut = () => {
     Cookies.remove('role')
     Cookies.remove('token')
+    Cookies.remove('level')
     navigate('/login')
   }
   return (

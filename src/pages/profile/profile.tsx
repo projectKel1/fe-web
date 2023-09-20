@@ -51,7 +51,7 @@ const Profile = () => {
   const navigate = useNavigate()
   useEffect(() => {
     getProfile()
-    if (!Cookies.get('data')) {
+    if (!Cookies.get('token')) {
       navigate('/login')
     }
   }, [])
