@@ -51,3 +51,13 @@ export const validateEditReimbursement = yup.object({
   description: yup.string().required(`Information is required`),
   type: yup.mixed().required(`type Reimbursement is required`),
 });
+
+export const validateCompany = yup.object({
+  name: yup.string().required("Name is required"),
+  address: yup.string().required("Address is required"),
+  description: yup.string().required("Description is required"),
+  email: yup.string().email("Invalid email format").required("Email is required"),
+  type: yup.string().required("Type is required"),
+  started_hour: yup.string().required("Started Hour is required"),
+  ended_hour: yup.string().required("Ended Hour is required"),
+});
