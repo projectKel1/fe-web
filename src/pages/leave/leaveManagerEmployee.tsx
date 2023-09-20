@@ -1,12 +1,6 @@
-import { LuFileEdit, LuTrash2 } from "react-icons/lu"
-import CardLeave from "../../components/cardLeave"
-
-const LeaveManagerEmployee = () => {
+const LeaveManager = () => {
     return (
         <div className="p-10 h-full bg-bgMain">
-            <div className="py-2">
-                <CardLeave tittle="List Leave" subTittle="Check List Leave" />
-            </div>
             <div className="py-2 w-full bg-white rounded-cardBase">
                 <div className="p-5">
                     <h1 className="font-semibold underline-offset-8 underline">
@@ -61,13 +55,15 @@ const LeaveManagerEmployee = () => {
                                     <td className="px-6 py-4">
                                         <img src="https://placekitten.com/200/300" className="w-20" alt="" />
                                     </td>
-                                    <td className="px-6 py-4 gap-5">
-                                        <div className="flex gap-3 justify-center items-center">
-                                            <div className="text-green-800 cursor-pointer">
-                                                <LuFileEdit size={25} />
+                                    <td className="px-6 py-4 flex justify-center gap-5">
+                                        <div className="text-red-800 border-2 border-red-800 rounded-cardBase hover:bg-red-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Reject
                                             </div>
-                                            <div className="text-red-800 cursor-pointer">
-                                                <LuTrash2 size={25} />
+                                        </div>
+                                        <div className="text-green-800 border-2 border-bgBtn rounded-cardBase hover:bg-green-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Approve
                                             </div>
                                         </div>
                                     </td>
@@ -91,13 +87,15 @@ const LeaveManagerEmployee = () => {
                                     <td className="px-6 py-4">
                                         <img src="https://placekitten.com/200/300" className="w-20" alt="" />
                                     </td>
-                                    <td className="px-6 py-4 gap-5">
-                                        <div className="flex gap-3 justify-center items-center">
-                                            <div className="text-green-800 cursor-pointer">
-                                                <LuFileEdit size={25} />
+                                    <td className="px-6 py-4 flex justify-center gap-5">
+                                        <div className="text-red-800 border-2 border-red-800 rounded-cardBase hover:bg-red-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Reject
                                             </div>
-                                            <div className="text-red-800 cursor-pointer">
-                                                <LuTrash2 size={25} />
+                                        </div>
+                                        <div className="text-green-800 border-2 border-bgBtn rounded-cardBase hover:bg-green-800 hover:text-white cursor-pointer">
+                                            <div className='px-4 py-2'>
+                                                Approve
                                             </div>
                                         </div>
                                     </td>
@@ -111,4 +109,4 @@ const LeaveManagerEmployee = () => {
     )
 }
 
-export default LeaveManagerEmployee
+export default LeaveManager

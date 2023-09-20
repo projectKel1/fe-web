@@ -1,6 +1,6 @@
 interface CardDash {
     tittle: string
-    count: string
+    count: any
     icons: any
 }
 const CardDash: React.FC<CardDash> = ({ tittle, count, icons }) => {

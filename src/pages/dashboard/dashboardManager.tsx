@@ -6,10 +6,15 @@ import { useEffect, useState } from 'react'
 import Cookies from "js-cookie"
 import { useNavigate } from "react-router-dom"
 const DashboardManager = () => {
-  const [usercount, setUsercount] = useState()
+  const [usercount, setUsercount] = useState ([])
+  const token = Cookies.get('token')
   const getData = async () => {
     try {
-      const response = await axios.get(`/users`)
+      const response = await axios.get(`/users`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       setUsercount(response.data.data)
     } catch (error) {
       console.log(error)
@@ -34,6 +39,7 @@ const DashboardManager = () => {
       <div className="row py-2">
         <div className="grid grid-cols-12 gap-2">
           <div className="col-span-12 flex flex-wrap gap-3">
+            <CardDash tittle="Total Data Users" count={usercount.length} icons={<LuActivity />} />
             <CardDash tittle="Jumlah Cuti Bulan ini" count="56" icons={<LuActivity />} />
             <CardDash tittle="Target Bulan ini" count="90" icons={<LuActivity />} />
             <CardDash tittle="Request Cuti Bawahan" count="5" icons={<LuActivity />} />
