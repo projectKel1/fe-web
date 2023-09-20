@@ -23,9 +23,10 @@ import DataAllUser from './pages/superadmin/dataAllUser';
 import Profile from './pages/profile/profile';
 import DataRole from './pages/superadmin/dataRole';
 import EmployeeLevel from './pages/superadmin/employeeLevel';
+import DataCompany from './pages/superadmin/dataCompany';
 
 function App() {
-  axios.defaults.baseURL = 'http://34.101.39.199';
+  axios.defaults.baseURL = 'https://hris-kelompok1.tech';
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
@@ -65,6 +66,7 @@ function App() {
             <Route path="/role" element={<DataRole />} />
             <Route path="/data-all-user" element={<DataAllUser />} />
             <Route path="/level" element={<EmployeeLevel />} />
+            <Route path="/Company" element={<DataCompany />} />
           </Route>
         </Routes>
       </BrowserRouter>
