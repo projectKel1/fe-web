@@ -7,7 +7,7 @@ import DashboardManager from './pages/dashboard/dashboardManager';
 import AttandanceManager from './pages/attendance/attandanceManager';
 import AttendanceEmployee from './pages/attendance/attendanceEmployee';
 import ReimbursementManager from './pages/reimbursement/reimbursementManager';
-import ReimbursementKaryawanManager from './pages/reimbursement/reimbursementKaryawanManager';
+import ReimbursementEmployeeManager from './pages/reimbursement/reimbursementEmployeeManager';
 import ReimbursmentEmployee from './pages/reimbursement/reimbursmentEmployee';
 import TargetManager from './pages/target/targetManager';
 import TargetEmployee from './pages/target/targetEmployee';
@@ -26,6 +26,15 @@ import EmployeeLevel from './pages/superadmin/employeeLevel';
 import LeaveManagerEmployee from './pages/leave/leaveManager';
 import ReimbursementManagerEmployee from './pages/reimbursement/reimbursementManagerEmployee';
 import DataCompany from './pages/superadmin/dataCompany';
+import ReimbursementRequestClevel from './pages/reimbursement/reimbursementRequestClevel';
+import LeaveClevel from './pages/leave/leaveClevel';
+import LeaveHrEmployee from './pages/leave/leaveHrEmployee';
+import LeaveHrManager from './pages/leave/leaveHrManager';
+import ReimbursementHrManager from './pages/reimbursement/reimbursementHrManager';
+import ReimbursementHrEmployee from './pages/reimbursement/reimbursementHrEmployee';
+import LeaveRequestManager from './pages/leave/leaveRequestManager';
+import ReimbursementRequestHrEmployee from './pages/reimbursement/reimbursementRequestHrEmployee';
+import ReimbursementRequestManager from './pages/reimbursement/reimbursementRequestManager';
 
 function App() {
   axios.defaults.baseURL = 'https://hris-kelompok1.tech';
@@ -38,18 +47,27 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard" element={<DashboardManager />} />
-            <Route path="/attendance-manager" element={<AttandanceManager />} />
+            <Route path="/attendance" element={<AttandanceManager />} />
             <Route path="/attendance-employee" element={<AttendanceEmployee />} />
             <Route path="/reimbursement-manager" element={<ReimbursementManager />} />
-            <Route path="/reimbursement-karyawan-manager" element={<ReimbursementKaryawanManager />} />
+            <Route path="/reimbursement-employee-manager" element={<ReimbursementEmployeeManager />} />
             <Route path="/reimbursement-manager-employee" element={<ReimbursementManagerEmployee />} />
+            <Route path="/reimbursement-request-clevel" element={<ReimbursementRequestClevel />} />
+            <Route path="/reimbursement-request-manager" element={<ReimbursementRequestManager />} />
+            <Route path="/reimbursement-request-hr-employee" element={<ReimbursementRequestHrEmployee />} />
+            <Route path="/reimbursement-hr-employee" element={<ReimbursementHrEmployee />} />
             <Route path="/reimbursement-employee" element={<ReimbursmentEmployee />} />
+            <Route path="/reimbursement-hr-employee" element={<ReimbursementHrManager />} />
             <Route path="/reimbursement-hr" element={<ReimbursementHr />} />
             <Route path="/target-manager" element={<TargetManager />} />
             <Route path="/target-employee" element={<TargetEmployee />} />
             <Route path="/leave-manager-employee" element={<LeaveManagerEmployee />} />
             <Route path="/leave-manager" element={<LeaveManager />} />
+            <Route path="/leave-request-employee" element={<LeaveRequestManager />} />
+            <Route path="/leave-clevel" element={<LeaveClevel />} />
             <Route path="/leave-employee" element={<LeaveEmployee />} />
+            <Route path="/leave-hr-employee" element={<LeaveHrEmployee />} />
+            <Route path="/leave-hr-manager" element={<LeaveHrManager />} />
             <Route path="/attendance-hr" element={<AttandanceHr />} />
             <Route path="/employee-hr" element={<EmployeeHr />} />
             <Route path="/leave-hr" element={<LeaveHr />} />

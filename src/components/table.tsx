@@ -88,6 +88,7 @@ const Table = () => {
           Authorization: `Bearer ${token}`
         }
       })
+      getData()
       setIsDelete(false)
     } catch (error) {
       console.log(error)
@@ -96,7 +97,8 @@ const Table = () => {
   }
   useEffect(() => {
     getData()
-  }, [data])
+  }, [])
+
   return (
     <div>
       <div className="relative overflow-x-auto">

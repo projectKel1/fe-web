@@ -29,7 +29,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Dashboard',
     },
     {
-      to: '/attendance-manager',
+      to: '/attendance',
       url: <LuCalendarRange size={25} />,
       name: 'Attendance',
     },
@@ -64,14 +64,14 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Data Company',
     },
     {
-      to: '/reimbursement-karyawan-manager',
-      url: <LuShield size={25} />,
-      name: 'Reimburstmen Employee',
-    },
-    {
       to: '/reimbursement-manager-employee',
       url: <LuShield size={25} />,
-      name: 'Reimburstmen Manager',
+      name: 'Reimburstmen Request Employee',
+    },
+    {
+      to: '/reimbursement-request-clevel',
+      url: <LuShield size={25} />,
+      name: 'Reimburstmen Request Manager',
     },
     {
       to: '/reimbursement-hr',
@@ -89,6 +89,26 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Target Employee',
     },
     {
+      to: '/reimbursement-employee-manager',
+      url: <LuTarget size={25} />,
+      name: 'Reimbursement Employee',
+    },
+    {
+      to: '/reimbursement-request-hr-employee',
+      url: <LuTarget size={25} />,
+      name: 'Reimbursement Request Hr Employee',
+    },
+    {
+      to: '/reimbursement-request-manager',
+      url: <LuBriefcase size={25} />,
+      name: 'Reimbursement Request Manager',
+    },
+    {
+      to: '/reimbursement-hr-employee',
+      url: <LuTarget size={25} />,
+      name: 'Reimbursement Hr Employee',
+    },
+    {
       to: '/leave-manager',
       url: <LuBriefcase size={25} />,
       name: 'Leave Employee',
@@ -99,10 +119,32 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Leave',
     },
     {
+      to: '/leave-hr-manager',
+      url: <LuBriefcase size={25} />,
+      name: 'Leave Hr Employee',
+    },
+    {
+      to: '/leave-hr-employee',
+      url: <LuBriefcase size={25} />,
+      name: 'Leave HR Employee',
+    },
+    {
       to: '/leave-hr',
       url: <LuBriefcase size={25} />,
-      name: 'Leave Manager',
+      name: 'Leave Request Manager',
     },
+    {
+      to: '/leave-request-employee',
+      url: <LuBriefcase size={25} />,
+      name: 'Leave Request Employee',
+    },
+    {
+      to: '/leave-clevel',
+      url: <LuBriefcase size={25} />,
+      name: 'Leave Request Manager',
+    },
+    
+
   ];
   return (
     <div>
@@ -116,14 +158,27 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
         {sideLink.map((element, index) => {
           if (
             (element.to === '/target-manager' ||
-              element.to === '/attendance-manager' ||
+              element.to === '/attendance' ||
               element.to === '/target-employee' ||
-              element.to === '/reimbursement-karyawan-manager' ||
+              element.to === '/reimbursement-manager-employee' ||
               element.to === '/reimbursement-manager' ||
+              element.to === '/reimbursement-request-clevel' ||
+              element.to === '/reimbursement-employee-manager' ||
+              element.to === '/reimbursement-hr-employee' ||
+              element.to === '/reimbursement-employee' ||
+              element.to === '/reimbursement-hr' ||
+              element.to === '/leave-manager-employee' ||
+              element.to === '/leave-hr' ||
+              element.to === '/leave-hr-manager' ||
+              element.to === '/leave-hr-employee' ||
+              element.to === '/reimbursement-request-hr-employee' ||
+              element.to === '/leave-clevel' ||
+              element.to === '/reimbursement-request-manager' ||
+              element.to === '/leave-request-employee' ||
               element.to === '/company' ||
               element.to === '/leave-manager') &&
             role_name == 'superadmin' &&
-            level === 'employee'
+            level === 'c-level'
           ) {
             return null;
           }
@@ -133,11 +188,20 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/company' ||
               element.to === '/role' ||
               element.to === '/level' ||
-              element.to === '/reimbursement-karyawan-manager' ||
               element.to === '/reimbursement-hr' ||
+              element.to === '/reimbursement-request-clevel' ||
+              element.to === '/reimbursement-employee-manager' ||
+              element.to === '/reimbursement-hr-employee' ||
+              element.to === '/reimbursement-request-hr-employee' ||
+              element.to === '/reimbursement-karyawan' ||
               element.to === '/company' ||
               element.to === '/leave-hr' ||
+              element.to === '/leave-hr-manager' ||
+              element.to === '/leave-hr-employee' ||
+              element.to === '/leave-clevel' ||
+              element.to === '/reimbursement-request-manager' ||
               element.to === '/leave-manager' ||
+              element.to === '/leave-request-employee' ||
               element.to === '/reimbursement-manager-employee' ||
               element.to === '/target-manager') &&
             role_name === 'non-hr' &&
@@ -152,6 +216,16 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/role' ||
               element.to === '/level' ||
               element.to === '/reimbursement-hr' ||
+              element.to === '/reimbursement-employee' ||
+              element.to === '/reimbursement-request-clevel' ||
+              element.to === '/reimbursement-request-hr-employee' ||
+              element.to === '/reimbursement-hr-employee' ||
+              element.to === '/leave-hr-manager' ||
+              element.to === '/leave-hr-employee' ||
+              element.to === '/leave-clevel' ||
+              element.to === '/leave-request-employee' ||
+              element.to === '/reimbursement-request-manager' ||
+              element.to === '/reimbursement-manager-employee' ||
               element.to === '/company' ||
               element.to === '/company' ||
               element.to === '/leave-hr' ||
@@ -162,17 +236,80 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
             return null;
           }
           if (
-            (element.to === '/data-user' ||
+            (
               element.to === '/data-company' ||
+              element.to === '/attendance' ||
+              element.to === '/data-user' ||
+              element.to === '/reimbursement-manager-employee' ||
+              element.to === '/reimbursement-request-clevel' ||
+              element.to === '/reimbursement-employee-manager' ||
+              element.to === '/leave-hr-employee' ||
+              element.to === '/leave-manager' ||
+              element.to === '/leave-hr' ||
+              element.to === '/leave-clevel' ||
               element.to === '/level' ||
               element.to === '/role' ||
               element.to === '/reimbursement-manager' ||
+              element.to === '/reimbursement-request-manager' ||
+              element.to === '/reimbursement-hr-employee' ||
+              element.to === '/leave-request-employee' ||
               element.to === '/target-manager' ||
               element.to === '/leave-manager-employee' ||
               element.to === '/reimbursement-hr' ||
               element.to === '/target-employee') &&
             role_name === 'hr' &&
+            level === 'manager'
+          ) {
+            return null;
+          }
+          if (
+            (
+              element.to === '/data-company' ||
+              element.to === '/data-user' ||
+              element.to === '/company' ||
+              element.to === '/attendance' ||
+              element.to === '/level' ||
+              element.to === '/role' ||
+              element.to === '/reimbursement-manager' ||
+              element.to === '/reimbursement-employee-manager' ||
+              element.to === '/target-manager' ||
+              element.to === '/leave-manager' ||
+              element.to === '/reimbursement-request-hr-employee' ||
+              element.to === '/leave-manager-employee' ||
+              element.to === '/reimbursement-hr' ||
+              element.to === '/reimbursement-manager-employee' ||
+              element.to === '/reimbursement-request-clevel' ||
+              element.to === '/reimbursement-hr-employee' ||
+              element.to === '/leave-hr-manager' ||
+              element.to === '/leave-hr-employee' ||
+              element.to === '/leave-request-employee' ||
+              element.to === '/leave-clevel' ||
+              element.to === '/target-employee') &&
+            role_name === 'non-hr' &&
             level === 'c-level'
+          ) {
+            return null;
+          }
+          if (
+            (
+              element.to === '/data-company' ||
+              element.to === '/data-user' ||
+              element.to === '/company' ||
+              element.to === '/level' ||
+              element.to === '/role' ||
+              element.to === '/reimbursement-manager' ||
+              element.to === '/reimbursement-request-hr-employee' ||
+              element.to === '/leave-hr' ||
+              element.to === '/reimbursement-employee-manager' ||
+              element.to === '/target-manager' ||
+              element.to === '/reimbursement-request-clevel' ||
+              element.to === '/leave-manager-employee' ||
+              element.to === '/leave-manager' ||
+              element.to === '/leave-hr-manager' ||
+              element.to === '/reimbursement-hr' ||
+              element.to === '/target-employee') &&
+            role_name === 'hr' &&
+            level === 'employee'
           ) {
             return null;
           }
@@ -181,18 +318,16 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               <div className="space-y-2 font-medium px-4">
                 <Link to={element.to}>
                   <div
-                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${
-                      location.pathname === element.to
-                        ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
-                        : 'font-semibold'
-                    }`}
+                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${location.pathname === element.to
+                      ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
+                      : 'font-semibold'
+                      }`}
                   >
                     <span>{element.url}</span>
                     <div>
                       <h1
-                        className={`px-4 ${
-                          slide ? `hidden` : ``
-                        } tracking-wide text-sm`}
+                        className={`px-4 ${slide ? `hidden` : ``
+                          } tracking-wide text-sm`}
                       >
                         {element.name}
                       </h1>
