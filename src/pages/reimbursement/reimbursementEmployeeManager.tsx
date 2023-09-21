@@ -8,21 +8,20 @@ interface Data {
   jenis: string,
   status: string
 }
-const ReimbursementKaryawanManager = () => {
+const ReimbursementEmployeeManager = () => {
   const [data, setData] = useState<Data[]>([])
   const token = Cookies.get('token')
   const getData = async () => {
-    try {
-      const response = await axios.get(`https://node.flattenbot.site/request-reimbursement`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    axios.get(`https://node.flattenbot.site/request-reimbursement`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.log(error.message)
       })
-      console.log(response.data)
-      setData(response.data)
-    } catch (error: any) {
-      console.log(error.response.data.message)
-    }
   }
   useEffect(() => {
     getData()
@@ -32,7 +31,7 @@ const ReimbursementKaryawanManager = () => {
       <div className="py-2 w-full bg-white rounded-cardBase">
         <div className="p-5">
           <h1 className="font-semibold underline-offset-8 underline">
-            History Reimbursement Karyawan
+            History Reimbursement Employee
           </h1>
         </div>
         <div className="p-2">
@@ -106,4 +105,4 @@ const ReimbursementKaryawanManager = () => {
   );
 };
 
-export default ReimbursementKaryawanManager;
+export default ReimbursementEmployeeManager;

@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import Button from './button'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import { LuXCircle } from 'react-icons/lu'
 import Popup from './popup'
 interface Target {
-    tittle : string
-    subTittle : string
+    tittle: string
+    subTittle: string
 }
-const CardTarget: React.FC<Target> = ({tittle,subTittle}) => {
+const CardTarget: React.FC<Target> = ({ tittle, subTittle }) => {
     const [open, setOpen] = useState(false)
     const handleOpen = () => {
         setOpen(true)
@@ -34,8 +34,8 @@ const CardTarget: React.FC<Target> = ({tittle,subTittle}) => {
                 open ? (
                     <Popup onConfirm={handleClose}>
                         <motion.div
-                        animate={{ y: 10 }}
-                        className="relative w-full max-w-md max-h-full">
+                            animate={{ y: 10 }}
+                            className="relative w-full max-w-md max-h-full">
                             <div className="relative bg-white rounded-lg shadow">
                                 <button
                                     type="button"
@@ -50,16 +50,6 @@ const CardTarget: React.FC<Target> = ({tittle,subTittle}) => {
                                         Add Target
                                     </h3>
                                     <form className="space-y-4" action="#">
-                                        <div>
-                                            <label className="block text-sm font-medium text-black">
-                                                Employee Name
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="text"
-                                                className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
-                                            />
-                                        </div>
                                         <div>
                                             <label className="block text-sm font-medium text-black">
                                                 Product
