@@ -1,4 +1,9 @@
-import { LuCheckCircle2, LuFileEdit, LuMinusCircle, LuTrash2 } from 'react-icons/lu';
+import {
+  LuCheckCircle2,
+  LuFileEdit,
+  LuMinusCircle,
+  LuTrash2,
+} from 'react-icons/lu';
 import Button from '../../components/button';
 import { useState, useEffect } from 'react';
 import Popup from '../../components/popup';
@@ -178,7 +183,7 @@ const DataAllUser = () => {
         .then((response) => {
           toast.success(response.data.message);
           setOpenEdit(false);
-          getData(currentPage)
+          getData(currentPage);
         })
         .catch((error) => {
           toast.error(error.message);
@@ -199,6 +204,7 @@ const DataAllUser = () => {
     getLevel();
     getRole();
     getCompany();
+    getManager();
     getData(currentPage);
     if (role_name === 'non-hr') {
       navigate('/dashboard');
@@ -206,11 +212,11 @@ const DataAllUser = () => {
   }, [currentPage]);
 
   const handleOpenEdit = () => {
-    setOpenEdit(true)
-  }
+    setOpenEdit(true);
+  };
   const handleCloseEdit = () => {
-    setOpenEdit(false)
-  }
+    setOpenEdit(false);
+  };
   const handleOpenDelete = () => {
     setIsDelete(true);
   };
@@ -219,18 +225,21 @@ const DataAllUser = () => {
   };
 
   const handleDel = () => {
-    axios.delete(`/users/${dataid}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then((response) => {
-      toast.success(response.data.message)
-      getData(currentPage)
-      setIsDelete(false)
-    }).catch((error) => {
-      toast.error(error.message)
-    })
-  }
+    axios
+      .delete(`/users/${dataid}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        toast.success(response.data.message);
+        getData(currentPage);
+        setIsDelete(false);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <div className="p-5 h-full bg-bgMain">
       <div className="rounded-cardBase bg-white w-full">
@@ -327,12 +336,12 @@ const DataAllUser = () => {
                     >
                       {role
                         ? role.map((element, index) => {
-                          return (
-                            <option key={index} value={element.id}>
-                              {element.role_name.toLocaleUpperCase()}
-                            </option>
-                          );
-                        })
+                            return (
+                              <option key={index} value={element.id}>
+                                {element.role_name.toLocaleUpperCase()}
+                              </option>
+                            );
+                          })
                         : null}
                     </select>
                   </div>
@@ -348,12 +357,12 @@ const DataAllUser = () => {
                     >
                       {manager
                         ? manager.map((element, index) => {
-                          return (
-                            <option key={index} value={element.id}>
-                              {element.manager.toLocaleUpperCase()}
-                            </option>
-                          );
-                        })
+                            return (
+                              <option key={index} value={element.id}>
+                                {element.manager.toLocaleUpperCase()}
+                              </option>
+                            );
+                          })
                         : null}
                     </select>
                   </div>
@@ -368,12 +377,12 @@ const DataAllUser = () => {
                     >
                       {level
                         ? level.map((element, index) => {
-                          return (
-                            <option key={index} value={element.id}>
-                              {element.level.toLocaleUpperCase()}
-                            </option>
-                          );
-                        })
+                            return (
+                              <option key={index} value={element.id}>
+                                {element.level.toLocaleUpperCase()}
+                              </option>
+                            );
+                          })
                         : null}
                     </select>
                   </div>
@@ -389,16 +398,16 @@ const DataAllUser = () => {
                     >
                       {company
                         ? company.map((element, index) => {
-                          return (
-                            <option key={index} value={element.id}>
-                              {element.name.toLocaleUpperCase()}
-                            </option>
-                          );
-                        })
+                            return (
+                              <option key={index} value={element.id}>
+                                {element.name.toLocaleUpperCase()}
+                              </option>
+                            );
+                          })
                         : null}
                     </select>
                   </div>
-                  <div className='w-full flex justify-end gap-2'>
+                  <div className="w-full flex justify-end gap-2">
                     <button
                       type="button"
                       onClick={() => handleClose()}
@@ -467,10 +476,20 @@ const DataAllUser = () => {
                   <td className="px-6 py-4">{item.role_name.toUpperCase()}</td>
                   <td className="px-6 py-4">{item.level_name.toUpperCase()}</td>
                   <td className="px-6 py-4 flex gap-5">
-                    <div onClick={() => { handleOpenEdit(), setDataid(item.id) }} className="text-green-800 cursor-pointer">
+                    <div
+                      onClick={() => {
+                        handleOpenEdit(), setDataid(item.id);
+                      }}
+                      className="text-green-800 cursor-pointer"
+                    >
                       <LuFileEdit size={25} />
                     </div>
-                    <div onClick={() => { handleOpenDelete(), setDataid(item.id) }} className="text-red-800 cursor-pointer">
+                    <div
+                      onClick={() => {
+                        handleOpenDelete(), setDataid(item.id);
+                      }}
+                      className="text-red-800 cursor-pointer"
+                    >
                       <LuTrash2 size={25} />
                     </div>
                   </td>
@@ -478,83 +497,93 @@ const DataAllUser = () => {
               );
             })}
           </tbody>
-          {
-            openedit && (
-              <Popup onConfirm={handleCloseEdit}>
-                <div className="relative w-full max-w-md max-h-full">
-                  <div className="relative bg-white rounded-lg shadow">
-                    <div className="px-6 py-6 lg:px-8">
-                      <h3 className="mb-4 text-xl font-bold text-black">
-                        Edit Data User
-                      </h3>
-                      <form onSubmit={formikedit.handleSubmit} className="space-y-4" action="#">
-                        <div>
-                          <label className="block text-sm font-medium text-black">
-                            Full Name
-                          </label>
-                          <input
-                            type="text"
-                            name="fullname"
-                            className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
-                            value={formikedit.values.fullname}
-                            onChange={formikedit.handleChange}
-                          />
-                          {formikedit.touched.fullname && formikedit.errors.fullname ? (
-                            <div className="text-red-600 text-sm">{formikedit.errors.fullname}</div>
-                          ) : null}
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-black">
-                            Email
-                          </label>
-                          <input
-                            type="text"
-                            name="email"
-                            className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
-                            value={formikedit.values.email}
-                            onChange={formikedit.handleChange}
-                          />
-                          {formikedit.touched.email && formikedit.errors.email ? (
-                            <div className="text-red-600 text-sm">{formikedit.errors.email}</div>
-                          ) : null}
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-black">
-                            Password
-                          </label>
-                          <input
-                            type="text"
-                            name="password"
-                            className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
-                            value={formikedit.values.password}
-                            onChange={formikedit.handleChange}
-                          />
-                          {formikedit.touched.password && formikedit.errors.password ? (
-                            <div className="text-red-600 text-sm">{formikedit.errors.password}</div>
-                          ) : null}
-                        </div>
-                        <div className="flex gap-2 py-2 justify-end">
-                          <button
-                            type="button"
-                            onClick={() => handleCloseEdit()}
-                            className=" text-white bg-bgBtnRed rounded-cardBase font-semibold text-sm px-5 py-2.5 text-center"
-                          >
-                            Cancel
-                          </button>
-                          <button
-                            type="submit"
-                            className=" text-white bg-bgBtn font-semibold rounded-cardBase text-sm px-8 py-2.5 text-center"
-                          >
-                            Submit
-                          </button>
-                        </div>
-                      </form>
-                    </div>
+          {openedit && (
+            <Popup onConfirm={handleCloseEdit}>
+              <div className="relative w-full max-w-md max-h-full">
+                <div className="relative bg-white rounded-lg shadow">
+                  <div className="px-6 py-6 lg:px-8">
+                    <h3 className="mb-4 text-xl font-bold text-black">
+                      Edit Data User
+                    </h3>
+                    <form
+                      onSubmit={formikedit.handleSubmit}
+                      className="space-y-4"
+                      action="#"
+                    >
+                      <div>
+                        <label className="block text-sm font-medium text-black">
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          name="fullname"
+                          className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
+                          value={formikedit.values.fullname}
+                          onChange={formikedit.handleChange}
+                        />
+                        {formikedit.touched.fullname &&
+                        formikedit.errors.fullname ? (
+                          <div className="text-red-600 text-sm">
+                            {formikedit.errors.fullname}
+                          </div>
+                        ) : null}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-black">
+                          Email
+                        </label>
+                        <input
+                          type="text"
+                          name="email"
+                          className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
+                          value={formikedit.values.email}
+                          onChange={formikedit.handleChange}
+                        />
+                        {formikedit.touched.email && formikedit.errors.email ? (
+                          <div className="text-red-600 text-sm">
+                            {formikedit.errors.email}
+                          </div>
+                        ) : null}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-black">
+                          Password
+                        </label>
+                        <input
+                          type="text"
+                          name="password"
+                          className=" border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5"
+                          value={formikedit.values.password}
+                          onChange={formikedit.handleChange}
+                        />
+                        {formikedit.touched.password &&
+                        formikedit.errors.password ? (
+                          <div className="text-red-600 text-sm">
+                            {formikedit.errors.password}
+                          </div>
+                        ) : null}
+                      </div>
+                      <div className="flex gap-2 py-2 justify-end">
+                        <button
+                          type="button"
+                          onClick={() => handleCloseEdit()}
+                          className=" text-white bg-bgBtnRed rounded-cardBase font-semibold text-sm px-5 py-2.5 text-center"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className=" text-white bg-bgBtn font-semibold rounded-cardBase text-sm px-8 py-2.5 text-center"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
-              </Popup>
-            )
-          }
+              </div>
+            </Popup>
+          )}
           {isDelete ? (
             <Popup onConfirm={handleDeleteClose}>
               <motion.div
@@ -603,22 +632,20 @@ const DataAllUser = () => {
       </div>
       <div onClick={prevPage} className="flex justify-end space-x-4 m-3">
         <button
-          className={`outline outline-bgBtn px-5 py-2 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
+          className={`outline outline-bgBtn px-5 py-2 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24 ${
+            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         >
           Previous
         </button>
-        {
-          data.length < 5 ? null : (
-            <button
-              onClick={nextPage}
-              className="outline outline-bgBtn px-5 py-3 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24"
-            >
-              Next
-            </button>
-          )
-        }
-
+        {data.length < 5 ? null : (
+          <button
+            onClick={nextPage}
+            className="outline outline-bgBtn px-5 py-3 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24"
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );
