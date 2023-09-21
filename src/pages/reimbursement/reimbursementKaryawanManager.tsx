@@ -1,60 +1,60 @@
 // import axios from 'axios'
 // import { useEffect, useState } from 'react'
-interface Data {
-    nama: string,
-    keterangan: string,
-    jenis: string,
-    status: string
-}
+// interface Data {
+//     nama: string,
+//     keterangan: string,
+//     jenis: string,
+//     status: string
+// }
 const ReimbursementKaryawanManager = () => {
-    // const [data, setData] = useState<Data[]>([])
-    // const getData = async () => {
-    //     try {
-    //         const response = await axios.get(`https://62c3aad4876c4700f540123e.mockapi.io/hrReimburstmen`)
-    //         console.log(response.data)
-    //         setData(response.data)
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
-    // useEffect(() => {
-    //     getData()
-    // }, [])
-    return (
-        <div className="p-10 h-full bg-bgMain">
-            <div className="py-2 w-full bg-white rounded-cardBase">
-                <div className="p-5">
-                    <h1 className="font-semibold underline-offset-8 underline">
-                        History Reimbursement Karyawan
-                    </h1>
-                </div>
-                <div className="p-2">
-                    <div className="relative overflow-x-auto">
-                        <table className="w-full text-sm text-left font-semibold">
-                            <thead className="text-xs uppercase border-b-2">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3">
-                                        Name
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        information
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Type Reimbursement
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Request Date
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Status
-                                    </th>
-                                    <th scope="col" className="px-6 py-3 text-center">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* {
+  // const [data, setData] = useState<Data[]>([])
+  // const getData = async () => {
+  //     try {
+  //         const response = await axios.get(`https://62c3aad4876c4700f540123e.mockapi.io/hrReimburstmen`)
+  //         console.log(response.data)
+  //         setData(response.data)
+  //     } catch (error) {
+  //         console.log(error)
+  //     }
+  // }
+  // useEffect(() => {
+  //     getData()
+  // }, [])
+  return (
+    <div className="p-10 h-full bg-bgMain">
+      <div className="py-2 w-full bg-white rounded-cardBase">
+        <div className="p-5">
+          <h1 className="font-semibold underline-offset-8 underline">
+            History Reimbursement Karyawan
+          </h1>
+        </div>
+        <div className="p-2">
+          <div className="relative overflow-x-auto">
+            <table className="w-full text-sm text-left font-semibold">
+              <thead className="text-xs uppercase border-b-2">
+                <tr>
+                  <th scope="col" className="px-6 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    information
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Type Reimbursement
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Request Date
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Status
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-center">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* {
                                     data ? data.map((element, index) => (
                                         <tr key={index} className={`${index % 2 == 0 ? 'bg-white hover:bg-gray-300' : 'bg-bgCard hover:bg-green-200'} border-b`}>
                                             <td scope="row" className="px-6 py-4 whitespace-nowrap">
@@ -90,13 +90,13 @@ const ReimbursementKaryawanManager = () => {
                                         </tr>
                                     )) : null
                                 } */}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div >
-    )
-}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default ReimbursementKaryawanManager
+export default ReimbursementKaryawanManager;

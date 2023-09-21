@@ -3,17 +3,17 @@ import {
   LuFileEdit,
   LuMinusCircle,
   LuTrash2,
-} from "react-icons/lu";
-import { useEffect, useState } from "react";
+} from 'react-icons/lu';
+import { useEffect, useState } from 'react';
 
-import CardCompany from "../../components/cardCompany";
-import Cookies from "js-cookie";
-import Popup from "../../components/popup";
-import axios from "axios";
-import { motion } from "framer-motion";
-import toast from "react-hot-toast";
-import { useFormik } from "formik";
-import { validateCompany } from "../../auth/yup";
+import CardCompany from '../../components/cardCompany';
+import Cookies from 'js-cookie';
+import Popup from '../../components/popup';
+import axios from 'axios';
+import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import { useFormik } from 'formik';
+import { validateCompany } from '../../auth/yup';
 
 interface DataCompany {
   id: number;
@@ -27,7 +27,7 @@ interface DataCompany {
   ended_hour: string;
 }
 const DataCompany = () => {
-  const token: any = Cookies.get("token");
+  const token = Cookies.get('token');
 
   const [company, setCompany] = useState<DataCompany[]>([]);
   const [dataSelected, setDataSelected] = useState<DataCompany>();
@@ -78,17 +78,17 @@ const DataCompany = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: dataSelected?.name || "",
-      address: dataSelected?.address || "",
-      description: dataSelected?.description || "",
-      email: dataSelected?.email || "",
-      type: dataSelected?.type || "",
-      started_hour: dataSelected?.started_hour || "",
-      ended_hour: dataSelected?.ended_hour || "",
+      name: dataSelected?.name || '',
+      address: dataSelected?.address || '',
+      description: dataSelected?.description || '',
+      email: dataSelected?.email || '',
+      type: dataSelected?.type || '',
+      started_hour: dataSelected?.started_hour || '',
+      ended_hour: dataSelected?.ended_hour || '',
     },
     validationSchema: validateCompany,
     onSubmit: (values) => {
@@ -116,7 +116,7 @@ const DataCompany = () => {
           setOpen(false);
         })
         .catch(() => {
-          toast.error("Mohon coba lagi nanti.");
+          toast.error('Mohon coba lagi nanti.');
         });
     },
   });
@@ -124,7 +124,11 @@ const DataCompany = () => {
   return (
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2 w-full">
-        <CardCompany title="Data Company" subTitle="Check Data Company here" getData={getCompany}/>
+        <CardCompany
+          title="Data Company"
+          subTitle="Check Data Company here"
+          getData={getCompany}
+        />
       </div>
       <div className="py-2 w-full bg-white rounded-cardBase">
         <div className="p-2 relative overflow-x-auto">
@@ -149,7 +153,7 @@ const DataCompany = () => {
                     <tr
                       key={index}
                       className={`${
-                        index % 2 === 0 ? "bg-white" : "bg-bgCard"
+                        index % 2 === 0 ? 'bg-white' : 'bg-bgCard'
                       } border-b hover:bg-gray-300`}
                     >
                       <td className="px-6 py-4">{index + 1}</td>
@@ -157,7 +161,7 @@ const DataCompany = () => {
                       <td className="px-6 py-4 flex gap-5">
                         <div
                           onClick={() => {
-                            handleOpen()
+                            handleOpen();
                             setDataSelected(item);
                           }}
                           className="text-green-800 cursor-pointer"
@@ -182,7 +186,6 @@ const DataCompany = () => {
 
           {open && (
             <Popup onConfirm={handleClose}>
-              
               <div className="relative w-full max-w-md max-h-full">
                 <div className="relative bg-white rounded-lg shadow">
                   <div className="px-6 py-6 lg:px-8">
@@ -291,7 +294,8 @@ const DataCompany = () => {
                           value={formik.values.started_hour}
                           onChange={formik.handleChange}
                         />
-                        {formik.touched.started_hour && formik.errors.started_hour ? (
+                        {formik.touched.started_hour &&
+                        formik.errors.started_hour ? (
                           <div className="text-red-600 text-sm">
                             {formik.errors.started_hour}
                           </div>
@@ -308,7 +312,8 @@ const DataCompany = () => {
                           value={formik.values.ended_hour}
                           onChange={formik.handleChange}
                         />
-                        {formik.touched.ended_hour && formik.errors.ended_hour ? (
+                        {formik.touched.ended_hour &&
+                        formik.errors.ended_hour ? (
                           <div className="text-red-600 text-sm">
                             {formik.errors.ended_hour}
                           </div>

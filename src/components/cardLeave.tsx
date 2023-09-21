@@ -24,13 +24,13 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
       information: '',
       start: '',
       end: '',
-      file: ''
+      file: '',
     },
     validationSchema: validateLeave,
     onSubmit: (values) => {
-      const formData = new FormData()
-      formData.append("file", values.file)
-      formData.append("upload_preset", "yymfqai7")
+      const formData = new FormData();
+      formData.append('file', values.file);
+      formData.append('upload_preset', 'yymfqai7');
       axios
         .post(`/login`, {
           information: values.information,
@@ -43,7 +43,7 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
           Cookies.set('data', JSON.stringify(response.data));
         })
         .catch((error) => {
-          toast.error('Mohon coba lagi nanti.');
+          toast.error(error.message);
         });
     },
   });
@@ -55,11 +55,7 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
       </div>
       <div className="py-10 flex flex-wrap justify-end">
         <div>
-          <Button
-            onClick={handleOpen}
-            textBtn='Add Request'
-            color="bg-bgBtn"
-          />
+          <Button onClick={handleOpen} textBtn="Add Request" color="bg-bgBtn" />
         </div>
       </div>
       {open ? (
@@ -73,7 +69,11 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
                 <h3 className="mb-4 text-xl font-bold text-black">
                   Request Leave
                 </h3>
-                <form onSubmit={formik.handleSubmit} className="space-y-4" action="#">
+                <form
+                  onSubmit={formik.handleSubmit}
+                  className="space-y-4"
+                  action="#"
+                >
                   <div>
                     <label className="block text-sm font-medium text-black">
                       Information
@@ -83,10 +83,11 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
                       name="information"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      className={`bg-gray-50 ${formik.touched.information && formik.errors.information
-                        ? `border-red-800`
-                        : ''
-                        } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
+                      className={`bg-gray-50 ${
+                        formik.touched.information && formik.errors.information
+                          ? `border-red-800`
+                          : ''
+                      } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
                       placeholder="enter your information"
                     />
                     {formik.touched.information && formik.errors.information ? (
@@ -104,10 +105,11 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
                       name="date"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      className={`bg-gray-50 ${formik.touched.start && formik.errors.start
-                        ? `border-red-800`
-                        : ''
-                        } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
+                      className={`bg-gray-50 ${
+                        formik.touched.start && formik.errors.start
+                          ? `border-red-800`
+                          : ''
+                      } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
                       placeholder="enter your date start"
                     />
                     {formik.touched.start && formik.errors.start ? (
@@ -123,10 +125,11 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
                     <input
                       type="date"
                       name="text"
-                      className={`bg-gray-50 ${formik.touched.end && formik.errors.end
-                        ? `border-red-800`
-                        : ''
-                        } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
+                      className={`bg-gray-50 ${
+                        formik.touched.end && formik.errors.end
+                          ? `border-red-800`
+                          : ''
+                      } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
                       placeholder="enter your date end"
                     />
                     {formik.touched.end && formik.errors.end ? (
@@ -142,11 +145,14 @@ const CardLeave: React.FC<Target> = ({ tittle, subTittle }) => {
                     <input
                       type="file"
                       name="file"
-                      onChange={(e) => formik.setFieldValue("file", e.target.files[0])}
-                      className={`bg-gray-50 ${formik.touched.file && formik.errors.file
-                        ? `border-red-800`
-                        : ''
-                        } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
+                      onChange={(e) =>
+                        formik.setFieldValue('file', e.target.files?.[0])
+                      }
+                      className={`bg-gray-50 ${
+                        formik.touched.file && formik.errors.file
+                          ? `border-red-800`
+                          : ''
+                      } border border-gray-300 text-black text-sm rounded-sm  block w-full p-2.5`}
                       placeholder="enter your file"
                     />
                     {formik.touched.file && formik.errors.file ? (
