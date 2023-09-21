@@ -17,11 +17,11 @@ export const validateLeave = yup.object({
   file: yup
     .mixed()
     .required('Required')
-    .test('FILE_SIZE', 'Too big', (value) => value && value.size <= 512000)
+    .test('FILE_SIZE', 'Too big', (value: any) => value && value.size <= 512000)
     .test(
       'FILE_TYPE',
       'file must .jpg/png',
-      (value) => value && ['image/png', 'image/jpg'].includes(value.type)
+      (value: any) => value && ['image/png', 'image/jpg'].includes(value.type)
     ),
   start: yup.mixed().required('Required'),
   end: yup.mixed().required('Required'),
@@ -58,11 +58,14 @@ export const validateEditReimbursement = yup.object({
 });
 
 export const validateCompany = yup.object({
-  name: yup.string().required("Name is required"),
-  address: yup.string().required("Address is required"),
-  description: yup.string().required("Description is required"),
-  email: yup.string().email("Invalid email format").required("Email is required"),
-  type: yup.string().required("Type is required"),
-  started_hour: yup.string().required("Started Hour is required"),
-  ended_hour: yup.string().required("Ended Hour is required"),
+  name: yup.string().required('Name is required'),
+  address: yup.string().required('Address is required'),
+  description: yup.string().required('Description is required'),
+  email: yup
+    .string()
+    .email('Invalid email format')
+    .required('Email is required'),
+  type: yup.string().required('Type is required'),
+  started_hour: yup.string().required('Started Hour is required'),
+  ended_hour: yup.string().required('Ended Hour is required'),
 });
