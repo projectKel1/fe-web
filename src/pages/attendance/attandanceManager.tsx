@@ -12,24 +12,19 @@ interface Data {
   is_checkout: boolean;
 }
 
-interface DataId {
-  id: number;
-}
-
 const AttandanceManager = () => {
-  const [attendanceId, setAttendanceId] = useState<DataId>();
+  // const [attendanceId, setAttendanceId] = useState<Data[]>();
   const [data, setData] = useState<Data[]>([]);
   // const [isDelete, setIsDelete] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const token = Cookies.get('token');
-  console.log(attendanceId, 'nomor');
 
   const getData = async (page: number) => {
     const token = Cookies.get('token');
-
+    const pageNumber = page;
     try {
       const response = await axios.get(
-        `https://node.flattenbot.site/attendances?page=${page}`,
+        `https://node.flattenbot.site/attendances?page=${pageNumber}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -63,10 +58,12 @@ const AttandanceManager = () => {
       });
   };
 
-  const handleCheckOut = () => {
+  const handleCheckOut = (id: number) => {
+    const idAtt = id;
+    console.log(idAtt, 'error');
     axios
       .put(
-        `https://node.flattenbot.site/attendances/${attendanceId}}`,
+        `https://node.flattenbot.site/attendances/${idAtt}}`,
         {
           is_checkout: true,
         },
@@ -78,7 +75,7 @@ const AttandanceManager = () => {
       )
       .then((response) => {
         toast.success(response.data.message);
-        console.log(response.data);
+        console.log(response.data + 'text checkout');
         getData(currentPage);
       })
       .catch((error) => {
@@ -230,7 +227,7 @@ const AttandanceManager = () => {
                         <td className="px-6 py-4 flex ">
                           <div
                             onClick={() => {
-                              handleCheckOut(), setAttendanceId(item.id);
+                              handleCheckOut(item.id);
                             }}
                             className="text-white bg-bgBtnRed p-1 hover:bg-red-600 cursor-pointer"
                           >

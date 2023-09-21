@@ -1,10 +1,9 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   LuPieChart,
   LuCalendarRange,
   LuShield,
   LuBuilding,
-  LuUser2,
   LuCircleDollarSign,
   LuBriefcase,
   LuUsers,
@@ -13,15 +12,15 @@ import {
   LuTarget,
 } from 'react-icons/lu';
 import Logo from '../assets/logo.png';
-import React, { useState } from 'react';
+import React from 'react';
 import Cookies from 'js-cookie';
 interface Slide {
   slide: boolean;
 }
 const Sidebar: React.FC<Slide> = ({ slide }) => {
   const location = useLocation();
-  const role_name = Cookies.get('role')
-  const level = Cookies.get('level')
+  const role_name = Cookies.get('role');
+  const level = Cookies.get('level');
 
   const sideLink = [
     {
@@ -68,7 +67,8 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       to: '/reimbursement-karyawan-manager',
       url: <LuShield size={25} />,
       name: 'Reimburstmen Employee',
-    }, {
+    },
+    {
       to: '/reimbursement-manager-employee',
       url: <LuShield size={25} />,
       name: 'Reimburstmen Manager',
@@ -102,7 +102,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       to: '/leave-hr',
       url: <LuBriefcase size={25} />,
       name: 'Leave Manager',
-    }
+    },
   ];
   return (
     <div>
@@ -114,33 +114,85 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
           {slide ? null : <h1 className="font-semibold">HRIS App</h1>}
         </div>
         {sideLink.map((element, index) => {
-          if ((element.to === "/target-manager" || element.to === "/attendance-manager" || element.to === "/target-employee" || element.to === "/reimbursement-karyawan-manager" || element.to === "/reimbursement-manager" || element.to === "/company" || element.to === "/leave-manager") && role_name == 'superadmin' && level === 'employee') {
-            return null
+          if (
+            (element.to === '/target-manager' ||
+              element.to === '/attendance-manager' ||
+              element.to === '/target-employee' ||
+              element.to === '/reimbursement-karyawan-manager' ||
+              element.to === '/reimbursement-manager' ||
+              element.to === '/company' ||
+              element.to === '/leave-manager') &&
+            role_name == 'superadmin' &&
+            level === 'employee'
+          ) {
+            return null;
           }
-          if ((element.to === "/data-user" || element.to === "/data-company" || element.to === "/company" || element.to === "/role" || element.to === "/level" || element.to === "/reimbursement-karyawan-manager" || element.to === "/reimbursement-hr" || element.to === "/company" || element.to === "/leave-hr" || element.to === "/leave-manager" || element.to === "/reimbursement-manager-employee" || element.to === "/target-manager") && role_name === 'non-hr' && level === 'employee') {
-            return null
+          if (
+            (element.to === '/data-user' ||
+              element.to === '/data-company' ||
+              element.to === '/company' ||
+              element.to === '/role' ||
+              element.to === '/level' ||
+              element.to === '/reimbursement-karyawan-manager' ||
+              element.to === '/reimbursement-hr' ||
+              element.to === '/company' ||
+              element.to === '/leave-hr' ||
+              element.to === '/leave-manager' ||
+              element.to === '/reimbursement-manager-employee' ||
+              element.to === '/target-manager') &&
+            role_name === 'non-hr' &&
+            level === 'employee'
+          ) {
+            return null;
           }
-          if ((element.to === "/data-user" || element.to === "/data-company" || element.to === "/company" || element.to === "/role" || element.to === "/level" || element.to === "/reimbursement-hr" || element.to === "/company" || element.to === "/company" || element.to === "/leave-hr" || element.to === "/target-employee") && role_name === 'non-hr' && level === 'manager') {
-            return null
+          if (
+            (element.to === '/data-user' ||
+              element.to === '/data-company' ||
+              element.to === '/company' ||
+              element.to === '/role' ||
+              element.to === '/level' ||
+              element.to === '/reimbursement-hr' ||
+              element.to === '/company' ||
+              element.to === '/company' ||
+              element.to === '/leave-hr' ||
+              element.to === '/target-employee') &&
+            role_name === 'non-hr' &&
+            level === 'manager'
+          ) {
+            return null;
           }
-          if ((element.to === "/data-user" || element.to === "/data-company" || element.to === "/level" || element.to === "/role" || element.to === "/reimbursement-manager" || element.to === "/target-manager" || element.to === "/leave-manager-employee" || element.to === "/reimbursement-hr" || element.to === "/target-employee") && role_name === 'hr' && level === 'c-level') {
-            return null
+          if (
+            (element.to === '/data-user' ||
+              element.to === '/data-company' ||
+              element.to === '/level' ||
+              element.to === '/role' ||
+              element.to === '/reimbursement-manager' ||
+              element.to === '/target-manager' ||
+              element.to === '/leave-manager-employee' ||
+              element.to === '/reimbursement-hr' ||
+              element.to === '/target-employee') &&
+            role_name === 'hr' &&
+            level === 'c-level'
+          ) {
+            return null;
           }
           return (
             <div key={index}>
               <div className="space-y-2 font-medium px-4">
                 <Link to={element.to}>
                   <div
-                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${location.pathname === element.to
-                      ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
-                      : 'font-semibold'
-                      }`}
+                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${
+                      location.pathname === element.to
+                        ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
+                        : 'font-semibold'
+                    }`}
                   >
                     <span>{element.url}</span>
                     <div>
                       <h1
-                        className={`px-4 ${slide ? `hidden` : ``
-                          } tracking-wide text-sm`}
+                        className={`px-4 ${
+                          slide ? `hidden` : ``
+                        } tracking-wide text-sm`}
                       >
                         {element.name}
                       </h1>

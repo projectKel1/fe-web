@@ -14,6 +14,7 @@ interface CardLevel {
 
 const CardLevel: React.FC<CardLevel> = ({ title, subTitle }) => {
   const [open, setOpen] = useState(false);
+  const token = Cookies.get('token');
   const handleOpen = () => {
     setOpen(true);
   };
@@ -26,9 +27,6 @@ const CardLevel: React.FC<CardLevel> = ({ title, subTitle }) => {
     },
     validationSchema: validateLevel,
     onSubmit: (values) => {
-      const tempData: any = Cookies.get('data');
-      const data = JSON.parse(tempData);
-      const token = data.data.token;
       axios
         .post(
           `/employee-levels`,
@@ -46,7 +44,7 @@ const CardLevel: React.FC<CardLevel> = ({ title, subTitle }) => {
           setOpen(false);
         })
         .catch((error) => {
-          toast.error('Mohon coba lagi nanti.');
+          toast.error(error.message);
           setOpen(false);
         });
     },

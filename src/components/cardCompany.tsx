@@ -1,11 +1,11 @@
-import Button from "./button";
-import Cookies from "js-cookie";
-import Popup from "./popup";
-import axios from "axios";
-import toast from "react-hot-toast";
-import { useFormik } from "formik";
-import { useState } from "react";
-import { validateCompany } from "../auth/yup";
+import Button from './button';
+import Cookies from 'js-cookie';
+import Popup from './popup';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useFormik } from 'formik';
+import { useState } from 'react';
+import { validateCompany } from '../auth/yup';
 
 interface CardCompany {
   title: string;
@@ -23,17 +23,17 @@ const CardCompany: React.FC<CardCompany> = ({ title, subTitle, getData }) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: "",
-      address: "",
-      description: "",
-      email: "",
-      type: "",
-      started_hour: "",
-      ended_hour: "",
+      name: '',
+      address: '',
+      description: '',
+      email: '',
+      type: '',
+      started_hour: '',
+      ended_hour: '',
     },
     validationSchema: validateCompany,
     onSubmit: (values) => {
-      const token: any = Cookies.get("token");
+      const token = Cookies.get('token');
       axios
         .post(
           `/companies`,
@@ -55,14 +55,15 @@ const CardCompany: React.FC<CardCompany> = ({ title, subTitle, getData }) => {
         .then((response) => {
           toast.success(response.data.message);
           setOpen(false);
-          getData()
+          getData();
         })
         .catch((error) => {
-          toast.error("Mohon coba lagi nanti.");
+          toast.error(error.message);
           setOpen(false);
         });
     },
   });
+
   return (
     <div className="rounded-cardBase bg-white w-full p-10">
       <div>
