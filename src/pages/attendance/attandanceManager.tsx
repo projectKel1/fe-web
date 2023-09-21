@@ -243,15 +243,15 @@ const AttandanceManager = () => {
             <div className="flex justify-end space-x-4 m-3">
               <button
                 onClick={prevPage}
-                className={`outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center  ${
-                  currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center  ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
                 Previous
               </button>
               <button
                 onClick={nextPage}
-                className="outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center"
+                className={`outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center  ${data.length < 5 ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
                 Next
               </button>

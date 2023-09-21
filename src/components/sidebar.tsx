@@ -29,7 +29,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Dashboard',
     },
     {
-      to: '/attendance-manager',
+      to: '/attendance',
       url: <LuCalendarRange size={25} />,
       name: 'Attendance',
     },
@@ -62,11 +62,6 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       to: '/data-company',
       url: <LuBuilding size={25} />,
       name: 'Data Company',
-    },
-    {
-      to: '/reimbursement-karyawan-manager',
-      url: <LuShield size={25} />,
-      name: 'Reimburstmen Employee',
     },
     {
       to: '/reimbursement-manager-employee',
@@ -119,7 +114,11 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/attendance-manager' ||
               element.to === '/target-employee' ||
               element.to === '/reimbursement-karyawan-manager' ||
+              element.to === '/reimbursement-manager-employee' ||
               element.to === '/reimbursement-manager' ||
+              element.to === '/reimbursement-hr' ||
+              element.to === '/leave-manager-employee' ||
+              element.to === '/leave-hr' ||
               element.to === '/company' ||
               element.to === '/leave-manager') &&
             role_name == 'superadmin' &&

@@ -1,25 +1,32 @@
-// import axios from 'axios'
-// import { useEffect, useState } from 'react'
-// interface Data {
-//     nama: string,
-//     keterangan: string,
-//     jenis: string,
-//     status: string
-// }
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
+
+interface Data {
+  nama: string,
+  keterangan: string,
+  jenis: string,
+  status: string
+}
 const ReimbursementKaryawanManager = () => {
-  // const [data, setData] = useState<Data[]>([])
-  // const getData = async () => {
-  //     try {
-  //         const response = await axios.get(`https://62c3aad4876c4700f540123e.mockapi.io/hrReimburstmen`)
-  //         console.log(response.data)
-  //         setData(response.data)
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // }
-  // useEffect(() => {
-  //     getData()
-  // }, [])
+  const [data, setData] = useState<Data[]>([])
+  const token = Cookies.get('token')
+  const getData = async () => {
+    try {
+      const response = await axios.get(`https://node.flattenbot.site/request-reimbursement`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log(response.data)
+      setData(response.data)
+    } catch (error: any) {
+      console.log(error.response.data.message)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2 w-full bg-white rounded-cardBase">
@@ -54,42 +61,42 @@ const ReimbursementKaryawanManager = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* {
-                                    data ? data.map((element, index) => (
-                                        <tr key={index} className={`${index % 2 == 0 ? 'bg-white hover:bg-gray-300' : 'bg-bgCard hover:bg-green-200'} border-b`}>
-                                            <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                                                {element.nama}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {element.keterangan}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {element.jenis}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                12/01/2023
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <span className="inline-flex font-semibold items-center bg-green-100 text-green-800 text-sm mr-2 px-2.5 py-0.5 rounded-full">
-                                                    <span className="w-2 h-2 mr-1 bg-green-500 rounded-full"></span>
-                                                    {element.status}
-                                                </span>
-                                            </td>
-                                            <td className="px-6 py-4 flex justify-center gap-5">
-                                                <div className="text-red-800 border-2 border-red-800 rounded-cardBase hover:bg-red-800 hover:text-white cursor-pointer">
-                                                    <div className='px-4 py-2'>
-                                                        Reject
-                                                    </div>
-                                                </div>
-                                                <div className="text-green-800 border-2 border-bgBtn rounded-cardBase hover:bg-green-800 hover:text-white cursor-pointer">
-                                                    <div className='px-4 py-2'>
-                                                        Approve
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )) : null
-                                } */}
+                {
+                  data ? data.map((element, index) => (
+                    <tr key={index} className={`${index % 2 == 0 ? 'bg-white hover:bg-gray-300' : 'bg-bgCard hover:bg-green-200'} border-b`}>
+                      <td scope="row" className="px-6 py-4 whitespace-nowrap">
+                        {element.nama}
+                      </td>
+                      <td className="px-6 py-4">
+                        {element.keterangan}
+                      </td>
+                      <td className="px-6 py-4">
+                        {element.jenis}
+                      </td>
+                      <td className="px-6 py-4">
+                        12/01/2023
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="inline-flex font-semibold items-center bg-green-100 text-green-800 text-sm mr-2 px-2.5 py-0.5 rounded-full">
+                          <span className="w-2 h-2 mr-1 bg-green-500 rounded-full"></span>
+                          {element.status}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 flex justify-center gap-5">
+                        <div className="text-red-800 border-2 border-red-800 rounded-cardBase hover:bg-red-800 hover:text-white cursor-pointer">
+                          <div className='px-4 py-2'>
+                            Reject
+                          </div>
+                        </div>
+                        <div className="text-green-800 border-2 border-bgBtn rounded-cardBase hover:bg-green-800 hover:text-white cursor-pointer">
+                          <div className='px-4 py-2'>
+                            Approve
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  )) : null
+                }
               </tbody>
             </table>
           </div>

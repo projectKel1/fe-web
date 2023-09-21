@@ -38,10 +38,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard" element={<DashboardManager />} />
-            <Route path="/attendance-manager" element={<AttandanceManager />} />
+            <Route path="/attendance" element={<AttandanceManager />} />
             <Route path="/attendance-employee" element={<AttendanceEmployee />} />
             <Route path="/reimbursement-manager" element={<ReimbursementManager />} />
-            <Route path="/reimbursement-karyawan-manager" element={<ReimbursementKaryawanManager />} />
+            <Route path="/reimbursement-karyawan" element={<ReimbursementKaryawanManager />} />
             <Route path="/reimbursement-manager-employee" element={<ReimbursementManagerEmployee />} />
             <Route path="/reimbursement-employee" element={<ReimbursmentEmployee />} />
             <Route path="/reimbursement-hr" element={<ReimbursementHr />} />

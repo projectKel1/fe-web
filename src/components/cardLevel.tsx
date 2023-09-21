@@ -57,7 +57,7 @@ const CardLevel: React.FC<CardLevel> = ({ title, subTitle }) => {
       </div>
       <div className="py-10 flex flex-wrap justify-end">
         <div>
-          <Button onClick={handleOpen} textBtn="Add Request" color="bg-bgBtn" />
+          <Button onClick={handleOpen} textBtn="Add Level" color="bg-bgBtn" />
         </div>
       </div>
       {open && (

@@ -13,14 +13,14 @@ const TargetManager = () => {
     return (
         <div className="p-10 h-full bg-bgMain">
             <div className="py-2">
-                <CardTarget tittle="List Target Karyawan " subTittle="Check List Target Karyawan" />
+                <CardTarget tittle="List Target Employee " subTittle="Check List Target Employee" />
             </div>
             <div className="py-2 w-full bg-white rounded-cardBase">
                 <div className="p-2">
                     <div className="py-2 w-full bg-white rounded-cardBase">
                         <div className="p-5">
                             <h1 className="font-semibold underline-offset-8 underline">
-                                History Target Karyawan
+                                History Target Employee
                             </h1>
                         </div>
                         <div className="p-2">
