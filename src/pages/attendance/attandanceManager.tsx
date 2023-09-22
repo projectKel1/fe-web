@@ -86,7 +86,7 @@ const AttandanceManager = () => {
 
   useEffect(() => {
     getData(currentPage);
-  }, [currentPage]);
+  }, []);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
