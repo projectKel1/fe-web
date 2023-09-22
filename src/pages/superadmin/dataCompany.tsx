@@ -33,14 +33,11 @@ const DataCompany = () => {
   const [dataSelected, setDataSelected] = useState<DataCompany>();
   const [open, setOpen] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    getCompany();
-  }, []);
-
-  const getCompany = () => {
+  const getCompany = (page: number) => {
     axios
-      .get(`/companies`, {
+      .get(`/companies?page=${page}&size=5`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -64,7 +61,7 @@ const DataCompany = () => {
       })
       .then((response) => {
         toast.success(response.data.message);
-        getCompany();
+        getCompany(currentPage);
         setIsDelete(false);
       })
       .catch((error) => {
@@ -78,6 +75,10 @@ const DataCompany = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    getCompany(currentPage);
+  }, [currentPage]);
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -112,7 +113,7 @@ const DataCompany = () => {
         )
         .then((response) => {
           toast.success(response.data.message);
-          getCompany();
+          getCompany(currentPage);
           setOpen(false);
         })
         .catch(() => {
@@ -120,6 +121,16 @@ const DataCompany = () => {
         });
     },
   });
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <div className="p-10 h-full bg-bgMain">
@@ -386,6 +397,23 @@ const DataCompany = () => {
             </Popup>
           ) : null}
         </div>
+      </div>
+      <div onClick={prevPage} className="flex justify-end space-x-4 m-3">
+        <button
+          className={`outline outline-bgBtn px-5 py-2 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24 ${
+            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+        >
+          Previous
+        </button>
+        {company.length < 5 ? null : (
+          <button
+            onClick={nextPage}
+            className="outline outline-bgBtn px-5 py-3 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24"
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );
