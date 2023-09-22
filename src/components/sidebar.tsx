@@ -210,6 +210,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/leave-hr-employee' ||
               element.to === '/leave-clevel' ||
               element.to === '/reimbursement-request-manager' ||
+              element.to === '/reimbursement-manager' ||
               element.to === '/leave-manager' ||
               element.to === '/leave-request-employee' ||
               element.to === '/reimbursement-manager-employee' ||
@@ -222,6 +223,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
           if (
             (
               element.to === '/data-company' ||
+              element.to === '/data-user' ||
               element.to === '/company' ||
               element.to === '/attendance' ||
               element.to === '/role' ||
@@ -235,7 +237,6 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/leave-hr-employee' ||
               element.to === '/leave-clevel' ||
               element.to === '/leave-request-employee' ||
-              element.to === '/reimbursement-manager' ||
               element.to === '/reimbursement-request-manager' ||
               element.to === '/reimbursement-manager-employee' ||
               element.to === '/company' ||
