@@ -99,6 +99,11 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Reimbursement Employee',
     },
     {
+      to: '/reimbursement-employee',
+      url: <LuTarget size={25} />,
+      name: 'Reimbursement',
+    },
+    {
       to: '/reimbursement-request-hr-employee',
       url: <LuTarget size={25} />,
       name: 'Reimbursement Request Hr Employee',
@@ -215,7 +220,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
             return null;
           }
           if (
-            (element.to === '/data-user' ||
+            (
               element.to === '/data-company' ||
               element.to === '/company' ||
               element.to === '/attendance' ||
@@ -230,6 +235,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/leave-hr-employee' ||
               element.to === '/leave-clevel' ||
               element.to === '/leave-request-employee' ||
+              element.to === '/reimbursement-manager' ||
               element.to === '/reimbursement-request-manager' ||
               element.to === '/reimbursement-manager-employee' ||
               element.to === '/company' ||
@@ -286,6 +292,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/reimbursement-manager-employee' ||
               element.to === '/reimbursement-request-clevel' ||
               element.to === '/reimbursement-hr-employee' ||
+              element.to === '/reimbursement-employee' ||
               element.to === '/leave-hr-manager' ||
               element.to === '/leave-hr-employee' ||
               element.to === '/leave-request-employee' ||
@@ -313,6 +320,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/leave-manager' ||
               element.to === '/leave-hr-manager' ||
               element.to === '/reimbursement-hr' ||
+              element.to === '/reimbursement-employee' ||
               element.to === '/target-employee') &&
             role_name === 'hr' &&
             level === 'employee'
@@ -324,18 +332,16 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               <div className="space-y-2 font-medium px-4">
                 <Link to={element.to}>
                   <div
-                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${
-                      location.pathname === element.to
+                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${location.pathname === element.to
                         ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
                         : 'font-semibold'
-                    }`}
+                      }`}
                   >
                     <span>{element.url}</span>
                     <div>
                       <h1
-                        className={`px-4 ${
-                          slide ? `hidden` : ``
-                        } tracking-wide text-sm`}
+                        className={`px-4 ${slide ? `hidden` : ``
+                          } tracking-wide text-sm`}
                       >
                         {element.name}
                       </h1>

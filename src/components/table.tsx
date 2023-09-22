@@ -20,13 +20,14 @@ interface Data {
   type: string,
   updated_at: Date,
   status: string,
+  url_proof: string,
   nominal: number
 }
 const Table = () => {
   const [isDelete, setIsDelete] = useState(false);
   const [data, setData] = useState<Data[]>([])
   const [open, setOpen] = useState(false)
-  const [dataid, setDataid] = useState<number>()
+  const [dataid, setDataid] = useState<Data>()
   const token = Cookies.get('token')
   const handleOpenDelete = () => {
     setIsDelete(true);
@@ -41,20 +42,21 @@ const Table = () => {
     setOpen(false)
   }
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      description: '',
-      type: 'travel',
-      nominal: '',
-      url_proof: '',
+      description: dataid?.description || '',
+      type: dataid?.type || 'travel',
+      nominal: dataid?.nominal || '',
+      url_proof: dataid?.url_proof || '',
     },
     validationSchema: validateEditReimbursement,
     onSubmit: (values) => {
       axios
-        .put(`https://node.flattenbot.site/request-reimbursement/${dataid}`, {
+        .put(`https://node.flattenbot.site/request-reimbursement/${dataid?.id}`, {
           description: values.description,
           type: values.type,
           nominal: values.nominal,
-          url_proof: values.type,
+          url_proof: values.url_proof,
         }, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -62,10 +64,11 @@ const Table = () => {
         })
         .then((response) => {
           toast.success(response.data.message);
+          getData()
           setOpen(false)
         })
-        .catch(() => {
-          toast.error('Mohon coba lagi nanti.');
+        .catch((error) => {
+          toast.error(error.message);
         });
     },
   });
@@ -83,7 +86,7 @@ const Table = () => {
   }
   const handleDel = async () => {
     try {
-      await axios.delete(`https://node.flattenbot.site/request-reimbursement/${dataid}`, {
+      await axios.delete(`https://node.flattenbot.site/request-reimbursement/${dataid?.id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -150,11 +153,11 @@ const Table = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 flex gap-5">
-                        <div onClick={() => { handleOpen(), setDataid(element.id) }} className="text-green-800 cursor-pointer">
+                        <div onClick={() => { handleOpen(), setDataid(element) }} className="text-green-800 cursor-pointer">
                           <LuFileEdit size={25} />
                         </div>
                         <div
-                          onClick={() => { handleOpenDelete(), setDataid(element.id) }}
+                          onClick={() => { handleOpenDelete(), setDataid(element) }}
                           className="text-red-800 cursor-pointer"
                         >
                           <LuTrash2 size={25} />

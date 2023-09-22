@@ -13,7 +13,7 @@ const ReimbursmentEmployee = () => {
       <div className="py-2 w-full bg-white rounded-cardBase">
         <div className="p-5">
           <h1 className="font-semibold underline-offset-8 underline">
-            History Reimbursement
+            History Reimbursement Employee
           </h1>
         </div>
         <div className="p-2">
