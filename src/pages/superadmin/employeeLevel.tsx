@@ -23,6 +23,7 @@ const EmployeeLevel = () => {
   const [open, setOpen] = useState(false);
   const [dataid, setDataid] = useState<DataLevel>();
   const [isDelete, setIsDelete] = useState(false);
+  const token = Cookies.get('token');
   const handleOpenDelete = () => {
     setIsDelete(true);
   };
@@ -30,7 +31,6 @@ const EmployeeLevel = () => {
     setIsDelete(false);
   };
   const getLevel = () => {
-    const token = Cookies.get('token');
     axios
       .get(`/employee-levels`, {
         headers: {
@@ -46,14 +46,12 @@ const EmployeeLevel = () => {
   };
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      level: '',
+      level: dataid?.level || '',
     },
     validationSchema: validateLevel,
     onSubmit: (values) => {
-      const tempData: any = Cookies.get('data');
-      const data = JSON.parse(tempData);
-      const token = data.data.token;
       axios
         .put(
           `/employee-levels/${dataid?.id}`,
@@ -77,9 +75,6 @@ const EmployeeLevel = () => {
     },
   });
   const handleDel = () => {
-    const tempData: any = Cookies.get('data');
-    const data = JSON.parse(tempData);
-    const token = data.data.token;
     axios
       .delete(`/employee-levels/${dataid?.id}`, {
         headers: {
@@ -103,7 +98,7 @@ const EmployeeLevel = () => {
   };
   useEffect(() => {
     getLevel();
-  }, [level]);
+  }, []);
   return (
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2 w-full">

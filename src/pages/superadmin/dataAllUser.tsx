@@ -15,12 +15,13 @@ import { validateCreateUser } from '../../auth/yup';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 interface Data {
+  id: number;
   fullname: string;
   email: string;
+  password: string;
   status: string;
   role_name: string;
   level_name: string;
-  id: number;
 }
 interface DataForm {
   id: number;
@@ -33,7 +34,7 @@ interface DataForm {
 const DataAllUser = () => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<Data[]>([]);
-  const [dataid, setDataid] = useState();
+  const [dataid, setDataid] = useState<Data>();
   const [openedit, setOpenEdit] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -159,16 +160,17 @@ const DataAllUser = () => {
     },
   });
   const formikedit = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      fullname: '',
-      email: '',
-      password: '',
+      fullname: dataid?.fullname || '',
+      email: dataid?.email || '',
+      password: '********',
     },
     validationSchema: validateCreateUser,
     onSubmit: (values) => {
       axios
         .put(
-          `/users/${dataid}`,
+          `/users/${dataid?.id}`,
           {
             fullname: values.fullname,
             email: values.email,
@@ -190,6 +192,7 @@ const DataAllUser = () => {
         });
     },
   });
+
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
   };
@@ -312,7 +315,7 @@ const DataAllUser = () => {
                       Password
                     </label>
                     <input
-                      type="password"
+                      type="text"
                       name="password"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
@@ -478,7 +481,7 @@ const DataAllUser = () => {
                   <td className="px-6 py-4 flex gap-5">
                     <div
                       onClick={() => {
-                        handleOpenEdit(), setDataid(item.id);
+                        handleOpenEdit(), setDataid(item);
                       }}
                       className="text-green-800 cursor-pointer"
                     >
@@ -486,7 +489,7 @@ const DataAllUser = () => {
                     </div>
                     <div
                       onClick={() => {
-                        handleOpenDelete(), setDataid(item.id);
+                        handleOpenDelete(), setDataid(item);
                       }}
                       className="text-red-800 cursor-pointer"
                     >
