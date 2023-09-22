@@ -30,8 +30,10 @@ const Login = () => {
           Cookies.set('token', response.data.data.token)
           const role = response.data.data.role_name
           const level = response.data.data.level
+          const company = response.data.data.company_id
           Cookies.set('role', role.toLowerCase())
           Cookies.set('level', level.toLowerCase())
+          Cookies.set('company', company)
           navigate('/dashboard')
           setStatus(false);
         })

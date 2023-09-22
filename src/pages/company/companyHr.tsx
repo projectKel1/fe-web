@@ -1,4 +1,41 @@
+import { useEffect, useState } from "react";
+
+import Cookies from "js-cookie";
+import axios from "axios";
+
+interface CompanyData {
+  name: string;
+  address: string;
+  description: string;
+  visi: string;
+  misi: string;
+  email: string;
+}
+
 const CompanyHr = () => {
+  const [companyData, setCompanyData] = useState<CompanyData>();
+
+  useEffect(() => {
+    getCompany();
+  }, []);
+
+  const getCompany = () => {
+    const token: any = Cookies.get("token");
+    const companyId: any = Cookies.get("company");
+    
+    axios
+      .get(`/companies/${companyId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setCompanyData(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="p-10 h-full bg-bgMain">
       <div className="py-2">
@@ -6,10 +43,7 @@ const CompanyHr = () => {
           <div>
             <h1 className="font-semibold text-2xl">Company Profile</h1>
             <p className="text-subTitle font-medium text-sm text-justify">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Exercitationem cumque minus suscipit saepe ad reprehenderit.
-              Recusandae, beatae hic ut sit aliquam soluta id quo, sequi at
-              similique quod quos placeat!
+              {companyData && companyData?.description}
             </p>
           </div>
         </div>
@@ -21,10 +55,7 @@ const CompanyHr = () => {
           </div>
           <div className="flex justify-center h-1/2 items-center">
             <span className="text-sm pt-12 pb-6 px-4 text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quas
-              voluptates magni harum debitis, officia iste autem nam, similique
-              ullam quod placeat minima, esse minus tempora. Odio voluptate id
-              tenetur.
+              {companyData && companyData?.visi}
             </span>
           </div>
         </div>
@@ -35,10 +66,7 @@ const CompanyHr = () => {
           </div>
           <div className="flex justify-center h-1/2 items-center">
             <span className="text-sm pt-12 pb-6 px-4 text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quas
-              voluptates magni harum debitis, officia iste autem nam, similique
-              ullam quod placeat minima, esse minus tempora. Odio voluptate id
-              tenetur.
+              {companyData && companyData?.misi}
             </span>
           </div>
         </div>
@@ -49,15 +77,12 @@ const CompanyHr = () => {
           </div>
           <div className="flex justify-center h-1/2 items-center">
             <span className="text-sm pt-12 pb-6 px-4 text-justify">
-              Jl Test, No 999, Blok Z, Jakarta Pusat, 30123
-              <br/>
-              Phone Number: +62 1234 9381
+              {companyData && companyData?.address}
               <br />
-              Email: test@mail.com
+              Email: {companyData && companyData?.email}
             </span>
           </div>
         </div>
-        
       </div>
     </div>
   );
