@@ -156,11 +156,15 @@ const AttandanceManager = () => {
                     <th scope="col" className="px-6 py-3">
                       No
                     </th>
+
                     <th scope="col" className="px-6 py-3">
-                      Working Hours
+                      Time Check In
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Information
+                      Time Check Out
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Status
                     </th>
                     <th scope="col" className="px-6 py-3">
                       Action
@@ -186,7 +190,7 @@ const AttandanceManager = () => {
                       .toString()
                       .padStart(2, '0');
                     const yearCreated = timestampCreated.getFullYear();
-                    const formattedDateTimeCreated = `${hoursCreated}:${minutesCreated}`;
+                    const formattedDateTimeCreated = `${hoursCreated}:${minutesCreated} - ${dayCreated}/${monthCreated}/${yearCreated}`;
 
                     const timestampUpdated = new Date(item.updated_at);
                     const hoursUpdated = timestampUpdated
@@ -197,8 +201,15 @@ const AttandanceManager = () => {
                       .getMinutes()
                       .toString()
                       .padStart(2, '0');
-
-                    const formattedDateTimeUpdated = `${hoursUpdated}:${minutesUpdated}`;
+                    const dayUpdated = timestampUpdated
+                      .getDate()
+                      .toString()
+                      .padStart(2, '0');
+                    const monthUpdated = (timestampUpdated.getMonth() + 1)
+                      .toString()
+                      .padStart(2, '0');
+                    const yearUpdated = timestampUpdated.getFullYear();
+                    const formattedDateTimeUpdated = `${hoursUpdated}:${minutesUpdated} - ${dayUpdated}/${monthUpdated}/${yearUpdated}`;
                     const rowNumber = (currentPage - 1) * 5 + index + 1;
                     return (
                       <tr
@@ -209,9 +220,10 @@ const AttandanceManager = () => {
                           {rowNumber}
                         </td>
                         <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                          {formattedDateTimeCreated} -{' '}
-                          {formattedDateTimeUpdated} - {dayCreated}/
-                          {monthCreated}/{yearCreated}
+                          {formattedDateTimeCreated}
+                        </td>
+                        <td scope="row" className="px-6 py-4 whitespace-nowrap">
+                          {item.is_checkout ? formattedDateTimeUpdated : '-'}
                         </td>
                         <td scope="row" className="px-6 py-4 whitespace-nowrap">
                           <span
@@ -243,15 +255,17 @@ const AttandanceManager = () => {
             <div className="flex justify-end space-x-4 m-3">
               <button
                 onClick={prevPage}
-                className={`outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center  ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-                  }`}
+                className={`outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center  ${
+                  currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
                 Previous
               </button>
               <button
                 onClick={nextPage}
-                className={`outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center  ${data.length < 5 ? 'opacity-50 cursor-not-allowed' : ''
-                  }`}
+                className={`outline outline-bgBtn py-2 w-32 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center  ${
+                  data.length < 5 ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
                 Next
               </button>
