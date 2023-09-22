@@ -34,6 +34,11 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       name: 'Attendance',
     },
     {
+      to: '/attendance-employee',
+      url: <LuCalendarRange size={25} />,
+      name: 'Attendance',
+    },
+    {
       to: '/reimbursement-manager',
       url: <LuCircleDollarSign size={25} />,
       name: 'Reimbursement',
@@ -143,8 +148,6 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
       url: <LuBriefcase size={25} />,
       name: 'Leave Request Manager',
     },
-    
-
   ];
   return (
     <div>
@@ -168,6 +171,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/reimbursement-employee' ||
               element.to === '/reimbursement-hr' ||
               element.to === '/leave-manager-employee' ||
+              element.to === '/attendance-employee' ||
               element.to === '/leave-hr' ||
               element.to === '/leave-hr-manager' ||
               element.to === '/leave-hr-employee' ||
@@ -195,6 +199,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               element.to === '/reimbursement-request-hr-employee' ||
               element.to === '/reimbursement-karyawan' ||
               element.to === '/company' ||
+              element.to === '/attendance-employee' ||
               element.to === '/leave-hr' ||
               element.to === '/leave-hr-manager' ||
               element.to === '/leave-hr-employee' ||
@@ -213,6 +218,7 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
             (element.to === '/data-user' ||
               element.to === '/data-company' ||
               element.to === '/company' ||
+              element.to === '/attendance' ||
               element.to === '/role' ||
               element.to === '/level' ||
               element.to === '/reimbursement-hr' ||
@@ -236,9 +242,9 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
             return null;
           }
           if (
-            (
-              element.to === '/data-company' ||
+            (element.to === '/data-company' ||
               element.to === '/attendance' ||
+              element.to === '/attendance-employee' ||
               element.to === '/data-user' ||
               element.to === '/reimbursement-manager-employee' ||
               element.to === '/reimbursement-request-clevel' ||
@@ -263,8 +269,8 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
             return null;
           }
           if (
-            (
-              element.to === '/data-company' ||
+            (element.to === '/data-company' ||
+              element.to === '/attendance-employee' ||
               element.to === '/data-user' ||
               element.to === '/company' ||
               element.to === '/attendance' ||
@@ -291,8 +297,8 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
             return null;
           }
           if (
-            (
-              element.to === '/data-company' ||
+            (element.to === '/data-company' ||
+              element.to === '/attendance-employee' ||
               element.to === '/data-user' ||
               element.to === '/company' ||
               element.to === '/level' ||
@@ -318,16 +324,18 @@ const Sidebar: React.FC<Slide> = ({ slide }) => {
               <div className="space-y-2 font-medium px-4">
                 <Link to={element.to}>
                   <div
-                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${location.pathname === element.to
-                      ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
-                      : 'font-semibold'
-                      }`}
+                    className={`cursor-pointer w-full flex items-center py-2 px-2 rounded-lg hover:w-auto hover:bg-bgBtn text-gray-700 hover:animations hover:text-white ${
+                      location.pathname === element.to
+                        ? 'bg-bgBtn  rounded-xl shadow-lg text-white font-bold'
+                        : 'font-semibold'
+                    }`}
                   >
                     <span>{element.url}</span>
                     <div>
                       <h1
-                        className={`px-4 ${slide ? `hidden` : ``
-                          } tracking-wide text-sm`}
+                        className={`px-4 ${
+                          slide ? `hidden` : ``
+                        } tracking-wide text-sm`}
                       >
                         {element.name}
                       </h1>
