@@ -20,7 +20,7 @@ const ReimbursementEmployeeManager = () => {
       })
       .then((response) => {
         console.log(response);
-        setData(response.data);
+        setData(response.data.data.data);
       })
       .catch((error) => {
         console.log(error.message);

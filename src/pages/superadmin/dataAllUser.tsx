@@ -25,6 +25,7 @@ interface Data {
 }
 interface DataForm {
   id: number;
+  fullname: string,
   role_name: string;
   level: string;
   name: string;
@@ -52,6 +53,7 @@ const DataAllUser = () => {
 
   const token = Cookies.get('token');
   const role_name = Cookies.get('role');
+  const levell = Cookies.get('level');
   const getData = async (page: number) => {
     try {
       const response = await axios.get(`/users?page=${page}&size=5`, {
@@ -94,7 +96,7 @@ const DataAllUser = () => {
   };
   const getManager = () => {
     axios
-      .get(`/users/filterManager=1`, {
+      .get(`/users?filterManager=1`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -339,12 +341,12 @@ const DataAllUser = () => {
                     >
                       {role
                         ? role.map((element, index) => {
-                            return (
-                              <option key={index} value={element.id}>
-                                {element.role_name.toLocaleUpperCase()}
-                              </option>
-                            );
-                          })
+                          return (
+                            <option key={index} value={element.id}>
+                              {element.role_name.toLocaleUpperCase()}
+                            </option>
+                          );
+                        })
                         : null}
                     </select>
                   </div>
@@ -360,12 +362,12 @@ const DataAllUser = () => {
                     >
                       {manager
                         ? manager.map((element, index) => {
-                            return (
-                              <option key={index} value={element.id}>
-                                {element.manager.toLocaleUpperCase()}
-                              </option>
-                            );
-                          })
+                          return (
+                            <option key={index} value={element.id}>
+                              {element.fullname.toUpperCase()}
+                            </option>
+                          );
+                        })
                         : null}
                     </select>
                   </div>
@@ -380,12 +382,12 @@ const DataAllUser = () => {
                     >
                       {level
                         ? level.map((element, index) => {
-                            return (
-                              <option key={index} value={element.id}>
-                                {element.level.toLocaleUpperCase()}
-                              </option>
-                            );
-                          })
+                          return (
+                            <option key={index} value={element.id}>
+                              {element.level.toUpperCase()}
+                            </option>
+                          );
+                        })
                         : null}
                     </select>
                   </div>
@@ -401,12 +403,12 @@ const DataAllUser = () => {
                     >
                       {company
                         ? company.map((element, index) => {
-                            return (
-                              <option key={index} value={element.id}>
-                                {element.name.toLocaleUpperCase()}
-                              </option>
-                            );
-                          })
+                          return (
+                            <option key={index} value={element.id}>
+                              {element.name.toUpperCase()}
+                            </option>
+                          );
+                        })
                         : null}
                     </select>
                   </div>
@@ -487,14 +489,19 @@ const DataAllUser = () => {
                     >
                       <LuFileEdit size={25} />
                     </div>
-                    <div
-                      onClick={() => {
-                        handleOpenDelete(), setDataid(item);
-                      }}
-                      className="text-red-800 cursor-pointer"
-                    >
-                      <LuTrash2 size={25} />
-                    </div>
+                    {
+                      role_name === 'superadmin' && levell === 'c-level' ? (
+                        <div
+                          onClick={() => {
+                            handleOpenDelete(), setDataid(item);
+                          }}
+                          className="text-red-800 cursor-pointer"
+                        >
+                          <LuTrash2 size={25} />
+                        </div>
+                      ) : null
+                    }
+
                   </td>
                 </tr>
               );
@@ -525,7 +532,7 @@ const DataAllUser = () => {
                           onChange={formikedit.handleChange}
                         />
                         {formikedit.touched.fullname &&
-                        formikedit.errors.fullname ? (
+                          formikedit.errors.fullname ? (
                           <div className="text-red-600 text-sm">
                             {formikedit.errors.fullname}
                           </div>
@@ -560,7 +567,7 @@ const DataAllUser = () => {
                           onChange={formikedit.handleChange}
                         />
                         {formikedit.touched.password &&
-                        formikedit.errors.password ? (
+                          formikedit.errors.password ? (
                           <div className="text-red-600 text-sm">
                             {formikedit.errors.password}
                           </div>
@@ -635,9 +642,8 @@ const DataAllUser = () => {
       </div>
       <div onClick={prevPage} className="flex justify-end space-x-4 m-3">
         <button
-          className={`outline outline-bgBtn px-5 py-2 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24 ${
-            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+          className={`outline outline-bgBtn px-5 py-2 hover:bg-bgBtn hover:text-white hover:outline-1 hover:text-opacity-90 font-semibold text-bgBtn rounded-btn flex justify-center items-center w-24 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
         >
           Previous
         </button>
